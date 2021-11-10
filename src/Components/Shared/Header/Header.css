@@ -1,0 +1,50 @@
+.logo{
+    width: 12%;
+}
+.header{
+    background: #1e88e5;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+.header .user{
+    font-size: 12px;
+}
+button{
+    background: transparent;
+    font-weight: 500;
+    border: 2px solid white;
+    padding: 3px 15px;
+    border-radius: 9px;
+}
+.logOut{
+    transition: .5s all;
+    background-color: transparent;
+    color: white;
+}
+.logOut:hover{
+    background:#F71943;
+    color: white;
+}
+a.nav-link {
+    color: white !important;
+}
+.pages a{
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 3px 5px !important;
+    margin: 4px 7px;
+    transition: .5s all;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    width: fit-content;
+
+}
+.pages a:hover{
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+}
+.pages .active{
+    border-top: 2px solid white;
+}

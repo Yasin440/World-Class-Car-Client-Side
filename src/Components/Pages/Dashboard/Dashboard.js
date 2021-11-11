@@ -12,14 +12,18 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import useAuth from '../../../Hooks/useAuth';
+import { NavLink } from 'react-router-dom';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import { ListItem, ListItemButton, ListItemText } from '@mui/material';
+import Payment from './Payment/Payment';
 
 const drawerWidth = 200;
 
 const Dashboard = (props) => {
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    let { path, url } = useRouteMatch();
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -32,35 +36,66 @@ const Dashboard = (props) => {
             <List>
                 <ListItem disablePadding>
                     <ListItemButton>
-                        <ListItemIcon>
-                            <i class="fas fa-user-circle" style={{ color: '#1e88e5', fontSize: '1.6rem' }}></i>
-                        </ListItemIcon>
+                        <i class="fas fa-user-circle me-1" style={{ color: '#1e88e5', fontSize: '1.6rem' }}></i>
                         <ListItemText primary={user?.displayName} />
                     </ListItemButton>
                 </ListItem>
             </List>
             <Divider />
             <List>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemText primary="My Order" />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemText primary="Reviews" />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemText primary="Pay" />
-                    </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemText primary="LogOut" />
-                    </ListItemButton>
-                </ListItem>
+                <NavLink to='/home' style={{ textDecoration: 'none' }}>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <i class="fas fa-home" style={{ color: '#1e88e5', fontSize: '1.6rem' }}></i>
+                            </ListItemIcon>
+                            <ListItemText primary="Home" />
+                        </ListItemButton>
+                    </ListItem>
+                </NavLink>
+                <NavLink to={`${url}`} style={{ textDecoration: 'none' }}>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemText primary="My Order" />
+                        </ListItemButton>
+                    </ListItem>
+                </NavLink>
+                <NavLink to={`${url}/dashboard_add_car`} style={{ textDecoration: 'none' }}>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemText primary="Add Car" />
+                        </ListItemButton>
+                    </ListItem>
+                </NavLink>
+                <NavLink to={`${url}/add_admin`} style={{ textDecoration: 'none' }}>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemText primary="Add Admin" />
+                        </ListItemButton>
+                    </ListItem>
+                </NavLink>
+                <NavLink to={`${url}/dashboard_review`} style={{ textDecoration: 'none' }}>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemText primary="Review" />
+                        </ListItemButton>
+                    </ListItem>
+                </NavLink>
+                <NavLink to={`${url}/dashboard_payment`} style={{ textDecoration: 'none' }}>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemText primary="Payment" />
+                        </ListItemButton>
+                    </ListItem>
+                </NavLink>
+                <NavLink to='/home' style={{ textDecoration: 'none' }}>
+                    <ListItem disablePadding>
+                        <ListItemButton onClick={logOut}>
+                            <i className="fas fa-sign-out-alt me-1" style={{ color: '#F71943', fontSize: '1.6rem' }}></i>
+                            <ListItemText primary="LogOut" />
+                        </ListItemButton>
+                    </ListItem>
+                </NavLink>
             </List>
         </div>
     );
@@ -129,7 +164,23 @@ const Dashboard = (props) => {
                 sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
-
+                <Switch>
+                    <Route path={`${path}/dashboard_add_car`}>
+                        <Payment></Payment>
+                    </Route>
+                    <Route path={`${path}/dashboard_payment`}>
+                        <Payment></Payment>
+                    </Route>
+                    <Route path={`${path}/add_admin`}>
+                        <Payment></Payment>
+                    </Route>
+                    <Route path={`${path}/dashboard_review`}>
+                        <Payment></Payment>
+                    </Route>
+                    <Route path={`${path}/dashboard_payment`}>
+                        <Payment></Payment>
+                    </Route>
+                </Switch>
             </Box>
         </Box>
     );

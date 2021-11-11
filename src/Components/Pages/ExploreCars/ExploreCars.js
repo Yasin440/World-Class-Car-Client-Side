@@ -1,11 +1,11 @@
 import { CircularProgress, Container, Grid } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import DreamCarCard from './DreamCarCard/DreamCarCard';
+import React, { useState, useEffect } from 'react';
+import DreamCarCard from '../Home/DreamsCar/DreamCarCard/DreamCarCard';
 
-const DreamsCar = () => {
+const ExploreCars = () => {
     const [cars, setCars] = useState();
     useEffect(() => {
-        fetch('http://localhost:4000/cars')
+        fetch('http://localhost:4000/cars/all')
             .then(res => res.json())
             .then(data => setCars(data))
     }, [])
@@ -23,8 +23,8 @@ const DreamsCar = () => {
                     backgroundColor: '#1e88e5',
                     color: 'white',
                     fontWeight: 'bold'
-                }}>ONE CLICK AWAY TO GET THIS BEAUTY</p>
-                <h2>THE WORLD OF AUTOS</h2>
+                }}>GET READY TO EXPLORE</p>
+                <h2> WORLD CLASS LUXURY CARS</h2>
             </div>
             {!cars ?
                 <div style={{ textAlign: 'center' }}>
@@ -40,8 +40,9 @@ const DreamsCar = () => {
                     }
                 </Grid>
             }
+
         </Container>
     );
 };
 
-export default DreamsCar;
+export default ExploreCars;

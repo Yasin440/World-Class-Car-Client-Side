@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 const DreamCarCard = ({ car }) => {
     return (
-        <Grid item xs={2} sm={4} md={4}>
+        <Grid item xs={4} sm={4} md={4}>
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                     component="img"

@@ -5,8 +5,9 @@ import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Button, CircularProgress, Container } from '@mui/material';
+import OrderModal from './OrderModal/OrderModal';
 
 const Img = styled('img')({
     margin: 'auto',
@@ -16,6 +17,11 @@ const Img = styled('img')({
 });
 
 const DetailsOfCar = () => {
+    //modal=====
+    const [openModal, setOpeModal] = React.useState(false);
+    const handleOpen = () => setOpeModal(true);
+    const handleClose = () => setOpeModal(false);
+    //======
     const { detailId } = useParams();
     const [carDetails, setCatDetails] = useState();
     useEffect(() => {
@@ -67,14 +73,18 @@ const DetailsOfCar = () => {
                                     </Typography>
                                 </Grid>
                                 <Grid item>
-                                    <Link to={`/orderCar/${detailId}`}><Button sx={{ fontWeight: 'bold' }} variant="outlined">Place Order</Button></Link>
+                                    <Button onClick={handleOpen} sx={{ fontWeight: 'bold' }} variant="outlined">Place Order</Button>
                                 </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
                 </Container>
             }
-
+            <OrderModal
+                carDetails={carDetails}
+                openModal={openModal}
+                handleClose={handleClose}
+            ></OrderModal>
             <Footer></Footer>
         </div>
     );

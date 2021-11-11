@@ -14,7 +14,7 @@ button{
     background: transparent;
     font-weight: 500;
     border: 2px solid white;
-    padding: 0 12px;
+    padding: 5px 15px;
     border-radius: 9px;
 }
 .navButton{

@@ -6,7 +6,7 @@ import { useLocation, useHistory } from "react-router";
 
 const Login = () => {
     const [loginData, setLoginData] = useState();
-    const { signInWithGoogle } = useAuth();
+    const { signInWithGoogle, logInWithEmailPassword } = useAuth();
 
     const location = useLocation();
     const history = useHistory();
@@ -19,6 +19,13 @@ const Login = () => {
                 history.push(redirect_url);
             })
     }
+    //redirect user with google
+    const logInWithEmailPass = (email, password) => {
+        logInWithEmailPassword(email, password)
+            .then(result => {
+                history.push(redirect_url);
+            })
+    }
     //get input field value
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -26,7 +33,10 @@ const Login = () => {
         const newLoginData = { ...loginData };
         newLoginData[field] = value;
         setLoginData(newLoginData);
-        console.log(newLoginData);
+    }
+    const handleLogInWithEmailPass = (e) => {
+        logInWithEmailPass(loginData.email, loginData.password);
+        e.preventDefault()
     }
     return (
         <Container>
@@ -38,7 +48,7 @@ const Login = () => {
                     <Typography variant="h6" gutterBottom component="div">
                         Please Login
                     </Typography>
-                    <form>
+                    <form onSubmit={handleLogInWithEmailPass}>
                         <TextField
                             sx={{ width: '75%', mt: 2 }}
                             name="email"

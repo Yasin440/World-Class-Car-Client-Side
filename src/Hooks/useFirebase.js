@@ -23,7 +23,7 @@ const useFirebase = () => {
                 // Signed in 
                 setUser(result.user);
                 //saveUser to DB
-                // saveUserDB(email, name, 'POST');
+                saveUserDB(email, name, 'POST');
                 //update name in firebase after creation
                 updateProfile(auth.currentUser, {
                     displayName: name
@@ -50,7 +50,14 @@ const useFirebase = () => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
             .then(result => setUser(result.user))
-            .catch(error => setError(error.message))
+            .catch(error => {
+                if (error) {
+                    setError(error.message)
+                }
+                else {
+                    alert('Registration Successful');
+                }
+            })
             .finally(() => setLoading(false));
         ;
 
@@ -63,8 +70,8 @@ const useFirebase = () => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider)
             .then((result) => {
-                // const user = result.user;
-                // saveUserDB(user.email, user.displayName, 'PUT');
+                const user = result.user;
+                saveUserDB(user.email, user.displayName, 'PUT');
             })
             .catch((error) => {
                 // Handle Errors here.
@@ -115,16 +122,16 @@ const useFirebase = () => {
     }
 
     // //save user info to database
-    // const saveUserDB = (email, displayName, method) => {
-    //     const user = { email, displayName };
-    //     fetch('http://localhost:4000/users', {
-    //         method: method,
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
-    //     })
-    // }
+    const saveUserDB = (email, displayName, method) => {
+        const user = { email, displayName };
+        fetch('http://localhost:4000/clients', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+    }
 
     return {
         user,

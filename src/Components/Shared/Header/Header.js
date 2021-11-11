@@ -20,10 +20,12 @@ const Header = () => {
                     <form className="d-flex">
                         {user?.email ?
                             <>
-                                <small className='me-2 user'>
+                                {/* <small className='me-2 user'>
                                     <p className='m-0'>Sign as:</p>
-                                    <p className='m-0'>{user?.displayName || user?.email}</p>
-                                </small>
+                                    <p className='m-0'>{user?.displayName}</p>
+                                </small> */}
+                                <span className="pages navbar-nav me-auto mb-2 mb-lg-0"><NavLink to="/dashboard">Dashboard</NavLink></span>
+
                                 <button onClick={logOut} className="logOut navButton"><i className="fas fa-sign-out-alt me-1"></i>logOut</button>
                             </>
                             :

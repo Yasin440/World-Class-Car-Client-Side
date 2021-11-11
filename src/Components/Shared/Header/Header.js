@@ -1,8 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../../Hooks/useAuth';
 import './Header.css';
 
 const Header = () => {
+    const { user, logOut } = useAuth();
     return (
         <nav className="navbar navbar-expand-lg navbar-light header">
             <div className='container'>
@@ -13,16 +15,21 @@ const Header = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <div className="pages navbar-nav me-auto mb-2 mb-lg-0">
                         <NavLink to="/home">Home</NavLink>
-                        <NavLink to="/my-order">My Orders</NavLink><NavLink to="/contact">Contact Us</NavLink>
                     </div>
                     <form className="d-flex">
-                        {/* <small className='me-2 user'>
-                        <p className='m-0'>Sign as:</p>
-                        <p className='m-0'>{user?.displayName || user?.email}</p>
-                    </small> */}
-                        <NavLink to='/register'>
-                            <button className="logOut"><i className="fas fa-sign-out-alt me-1"></i>logOut</button>
-                        </NavLink>
+                        {user?.email ?
+                            <>
+                                <small className='me-2 user'>
+                                    <p className='m-0'>Sign as:</p>
+                                    <p className='m-0'>{user?.displayName || user?.email}</p>
+                                </small>
+                                <button onClick={logOut} className="logOut navButton"><i className="fas fa-sign-out-alt me-1"></i>logOut</button>
+                            </>
+                            :
+                            <NavLink to='/login'>
+                                <button className="navButton"><i className="fas fa-sign-in-alt me-1"></i>SignIn</button>
+                            </NavLink>
+                        }
                     </form>
                 </div>
             </div>

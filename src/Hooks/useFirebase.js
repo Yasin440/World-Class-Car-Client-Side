@@ -10,12 +10,12 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState();
     const [loading, setLoading] = useState(true);
-    const [admin, setAdmin] = useState(false);
+    // const [admin, setAdmin] = useState(false);
     const [jwtToken, setJwtToken] = useState('');
 
 
     //registerWithEmailPassword
-    const registerWithEmailPassword = (email, password, name, handleSucModalOpen, history) => {
+    const registerWithEmailPassword = (email, password, name, history) => {
         setError('');
         setLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
@@ -23,7 +23,7 @@ const useFirebase = () => {
                 // Signed in 
                 setUser(result.user);
                 //saveUser to DB
-                saveUserDB(email, name, 'POST');
+                // saveUserDB(email, name, 'POST');
                 //update name in firebase after creation
                 updateProfile(auth.currentUser, {
                     displayName: name
@@ -34,7 +34,6 @@ const useFirebase = () => {
                     .catch((error) => {
                         setError(error.message);
                     });
-                handleSucModalOpen();
                 history.replace('/');
             })
             .catch((error) => {
@@ -64,8 +63,8 @@ const useFirebase = () => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider)
             .then((result) => {
-                const user = result.user;
-                saveUserDB(user.email, user.displayName, 'PUT');
+                // const user = result.user;
+                // saveUserDB(user.email, user.displayName, 'PUT');
             })
             .catch((error) => {
                 // Handle Errors here.
@@ -95,13 +94,13 @@ const useFirebase = () => {
     }, [])
 
     //get admin validation in true of false
-    useEffect(() => {
-        fetch(`http://localhost:4000/users/${user.email}`)
-            .then(res => res.json())
-            .then(data => {
-                setAdmin(data.admin);
-            })
-    }, [user.email])
+    // useEffect(() => {
+    //     fetch(`http://localhost:4000/users/${user.email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setAdmin(data.admin);
+    //         })
+    // }, [user.email])
 
     //logOut user
     const logOut = () => {
@@ -115,21 +114,21 @@ const useFirebase = () => {
         ;
     }
 
-    //save user info to database
-    const saveUserDB = (email, displayName, method) => {
-        const user = { email, displayName };
-        fetch('http://localhost:4000/users', {
-            method: method,
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        })
-    }
+    // //save user info to database
+    // const saveUserDB = (email, displayName, method) => {
+    //     const user = { email, displayName };
+    //     fetch('http://localhost:4000/users', {
+    //         method: method,
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(user)
+    //     })
+    // }
 
     return {
         user,
-        admin,
+        // admin,
         error,
         loading,
         jwtToken,

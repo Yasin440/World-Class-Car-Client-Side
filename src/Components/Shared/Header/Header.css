@@ -17,7 +17,7 @@ button{
     padding: 3px 15px;
     border-radius: 9px;
 }
-.logOut{
+.navButton{
     transition: .5s all;
     background-color: transparent;
     color: white;

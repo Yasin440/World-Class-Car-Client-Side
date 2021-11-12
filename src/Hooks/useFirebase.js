@@ -10,6 +10,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState();
     const [loading, setLoading] = useState(true);
+    const [manageAllOrders, setManageAllOrders] = useState();
     // const [admin, setAdmin] = useState(false);
     const [jwtToken, setJwtToken] = useState('');
 
@@ -132,6 +133,12 @@ const useFirebase = () => {
             body: JSON.stringify(user)
         })
     }
+    //get all order info from database
+    useEffect(() => {
+        fetch('http://localhost:4000/orderedCars/all')
+            .then(res => res.json())
+            .then(data => setManageAllOrders(data))
+    }, [])
 
     return {
         user,
@@ -139,6 +146,8 @@ const useFirebase = () => {
         error,
         loading,
         jwtToken,
+        manageAllOrders,
+        setManageAllOrders,
         registerWithEmailPassword,
         logInWithEmailPassword,
         signInWithGoogle,

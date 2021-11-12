@@ -16,6 +16,7 @@ import { NavLink } from 'react-router-dom';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import { ListItem, ListItemButton, ListItemText } from '@mui/material';
 import Payment from './Payment/Payment';
+import ManageAllOrders from './ManageAllOrders/ManageAllOrders';
 
 const drawerWidth = 200;
 
@@ -36,7 +37,7 @@ const Dashboard = (props) => {
             <List>
                 <ListItem disablePadding>
                     <ListItemButton>
-                        <i class="fas fa-user-circle me-1" style={{ color: '#1e88e5', fontSize: '1.6rem' }}></i>
+                        <i className="fas fa-user-circle me-1" style={{ color: '#1e88e5', fontSize: '1.6rem' }}></i>
                         <ListItemText primary={user?.displayName} />
                     </ListItemButton>
                 </ListItem>
@@ -47,9 +48,23 @@ const Dashboard = (props) => {
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
-                                <i class="fas fa-home" style={{ color: '#1e88e5', fontSize: '1.6rem' }}></i>
+                                <i className="fas fa-home" style={{ color: '#1e88e5', fontSize: '1.6rem' }}></i>
                             </ListItemIcon>
                             <ListItemText primary="Home" />
+                        </ListItemButton>
+                    </ListItem>
+                </NavLink>
+                <NavLink to={`${url}/add_admin`} style={{ textDecoration: 'none' }}>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemText primary="Add Admin" />
+                        </ListItemButton>
+                    </ListItem>
+                </NavLink>
+                <NavLink to={`${url}/manage_all_order`} style={{ textDecoration: 'none' }}>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemText primary="Manage All Order" />
                         </ListItemButton>
                     </ListItem>
                 </NavLink>
@@ -64,13 +79,6 @@ const Dashboard = (props) => {
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemText primary="Add Car" />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to={`${url}/add_admin`} style={{ textDecoration: 'none' }}>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemText primary="Add Admin" />
                         </ListItemButton>
                     </ListItem>
                 </NavLink>
@@ -168,11 +176,11 @@ const Dashboard = (props) => {
                     <Route path={`${path}/dashboard_add_car`}>
                         <Payment></Payment>
                     </Route>
-                    <Route path={`${path}/dashboard_payment`}>
-                        <Payment></Payment>
-                    </Route>
                     <Route path={`${path}/add_admin`}>
                         <Payment></Payment>
+                    </Route>
+                    <Route path={`${path}/manage_all_order`}>
+                        <ManageAllOrders></ManageAllOrders>
                     </Route>
                     <Route path={`${path}/dashboard_review`}>
                         <Payment></Payment>

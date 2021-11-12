@@ -17,6 +17,7 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import { ListItem, ListItemButton, ListItemText } from '@mui/material';
 import Payment from './Payment/Payment';
 import ManageAllOrders from './ManageAllOrders/ManageAllOrders';
+import AddCar from './AddCar/AddCar';
 
 const drawerWidth = 200;
 
@@ -174,16 +175,14 @@ const Dashboard = (props) => {
                 <Toolbar />
                 <Switch>
                     <Route path={`${path}/dashboard_add_car`}>
-                        <Payment></Payment>
+                        <AddCar></AddCar>
                     </Route>
                     <Route path={`${path}/add_admin`}>
-                        <Payment></Payment>
                     </Route>
                     <Route path={`${path}/manage_all_order`}>
                         <ManageAllOrders></ManageAllOrders>
                     </Route>
                     <Route path={`${path}/dashboard_review`}>
-                        <Payment></Payment>
                     </Route>
                     <Route path={`${path}/dashboard_payment`}>
                         <Payment></Payment>

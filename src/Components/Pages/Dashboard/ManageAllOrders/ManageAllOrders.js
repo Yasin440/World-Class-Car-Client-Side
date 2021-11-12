@@ -2,10 +2,11 @@ import React from 'react';
 import { CircularProgress, Container, Grid } from '@mui/material';
 import ManageOrderCard from './ManageOrderCard/ManageOrderCard';
 import useAuth from '../../../../Hooks/useAuth';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 const ManageAllOrders = () => {
     const { manageAllOrders } = useAuth();
-
     return (
         <Container>
             <div style={{
@@ -28,16 +29,26 @@ const ManageAllOrders = () => {
                     <CircularProgress sx={{ my: 3 }} />
                 </div>
                 :
-                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                <>
                     {
-                        manageAllOrders?.map(manageOrders =>
-                            <ManageOrderCard
-                                key={manageOrders._id}
-                                manageOrders={manageOrders}
-                            ></ManageOrderCard>
-                        )
+                        manageAllOrders.length === 0 ?
+                            <Alert severity="info">
+                                <AlertTitle>Please Reload after Order</AlertTitle>
+                                <strong>There is no Order to Show! </strong>
+                            </Alert>
+                            :
+                            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                                {
+                                    manageAllOrders?.map(manageOrders =>
+                                        <ManageOrderCard
+                                            key={manageOrders._id}
+                                            manageOrders={manageOrders}
+                                        ></ManageOrderCard>
+                                    )
+                                }
+                            </Grid>
                     }
-                </Grid>
+                </>
             }
         </Container>
     );

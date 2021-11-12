@@ -5,7 +5,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Link } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 import useAuth from '../../../../../Hooks/useAuth';
 
@@ -16,7 +15,9 @@ const ManageOrderCard = ({ manageOrders }) => {
     const handleDelete = () => {
         const confirm = window.confirm("Are You Sure To DELETE This CarsOrder..?");
         if (confirm) {
-            fetch(`http://localhost:3000/orderedCar/delete/${_id}`)
+            fetch(`http://localhost:4000/orderedCars/delete/${_id}`, {
+                method: "DELETE"
+            })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
@@ -55,14 +56,12 @@ const ManageOrderCard = ({ manageOrders }) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Link to={`/orderedCar/delete/${_id}`}>
-                        <Button
-                            onClick={handleDelete}
-                            sx={{ fontWeight: 'bold' }}
-                            startIcon={<DeleteIcon />}
-                            variant="outlined">Delete
-                        </Button>
-                    </Link>
+                    <Button
+                        onClick={handleDelete}
+                        sx={{ fontWeight: 'bold' }}
+                        startIcon={<DeleteIcon />}
+                        variant="outlined">Delete
+                    </Button>
                 </CardActions>
             </Card>
         </Grid>

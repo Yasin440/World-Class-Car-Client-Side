@@ -21,6 +21,8 @@ import AddCar from './AddCar/AddCar';
 import MyOrder from './MyOrder/MyOrder';
 import PrivateAdminRoute from '../../../PrivateRoute/PrivateAdminRoute';
 import AddAdmin from './AddAdmin/AddAdmin';
+import ManageAllCars from './ManageAllCars/ManageAllCars';
+import AddReview from './AddReview/AddReview';
 
 const drawerWidth = 200;
 
@@ -41,7 +43,7 @@ const Dashboard = (props) => {
             <List>
                 <ListItem disablePadding>
                     <ListItemButton>
-                        <i className="fas fa-user-circle me-1" style={{ color: '#1e88e5', fontSize: '1.6rem' }}></i>
+                        <i className="fas fa-user-circle me-1" style={{ color: '#1e88e5', fontSize: '1.2rem' }}></i>
                         <ListItemText primary={user?.displayName} />
                     </ListItemButton>
                 </ListItem>
@@ -52,7 +54,7 @@ const Dashboard = (props) => {
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
-                                <i className="fas fa-home" style={{ color: '#1e88e5', fontSize: '1.6rem' }}></i>
+                                <i className="fas fa-home" style={{ color: '#1e88e5', fontSize: '1.2rem' }}></i>
                             </ListItemIcon>
                             <ListItemText primary="Home" />
                         </ListItemButton>
@@ -78,6 +80,13 @@ const Dashboard = (props) => {
                             <ListItem disablePadding>
                                 <ListItemButton>
                                     <ListItemText primary="Manage All Order" />
+                                </ListItemButton>
+                            </ListItem>
+                        </NavLink>
+                        <NavLink to={`${url}/manage_cars`} style={{ textDecoration: 'none' }}>
+                            <ListItem disablePadding>
+                                <ListItemButton>
+                                    <ListItemText primary="Manage Cars" />
                                 </ListItemButton>
                             </ListItem>
                         </NavLink>
@@ -108,7 +117,7 @@ const Dashboard = (props) => {
                 <NavLink to='/home' style={{ textDecoration: 'none' }}>
                     <ListItem disablePadding>
                         <ListItemButton onClick={logOut}>
-                            <i className="fas fa-sign-out-alt me-1" style={{ color: '#F71943', fontSize: '1.6rem' }}></i>
+                            <i className="fas fa-sign-out-alt me-1" style={{ color: '#F71943', fontSize: '1.2rem' }}></i>
                             <ListItemText primary="LogOut" />
                         </ListItemButton>
                     </ListItem>
@@ -194,7 +203,11 @@ const Dashboard = (props) => {
                     <PrivateAdminRoute path={`${path}/manage_all_order`}>
                         <ManageAllOrders></ManageAllOrders>
                     </PrivateAdminRoute>
+                    <PrivateAdminRoute path={`${path}/manage_cars`}>
+                        <ManageAllCars></ManageAllCars>
+                    </PrivateAdminRoute>
                     <Route path={`${path}/dashboard_review`}>
+                        <AddReview></AddReview>
                     </Route>
                     <Route path={`${path}/dashboard_payment`}>
                         <Payment></Payment>

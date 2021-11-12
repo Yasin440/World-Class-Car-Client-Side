@@ -10,9 +10,11 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState();
     const [loading, setLoading] = useState(true);
-    const [manageAllOrders, setManageAllOrders] = useState();
     const [admin, setAdmin] = useState(false);
     const [jwtToken, setJwtToken] = useState('');
+    const [manageAllOrders, setManageAllOrders] = useState();
+    const [manageMyOrders, setManageMyOrders] = useState();
+
 
 
     //registerWithEmailPassword
@@ -113,12 +115,15 @@ const useFirebase = () => {
     //***/== logOut user ==/***//
     const logOut = () => {
         setLoading(true);
-        signOut(auth).then(() => {
-            // Sign-out successful.
-        }).catch((error) => {
-            // An error happened.
-        })
-            .finally(() => setLoading(false));
+        signOut(auth)
+            .then(() => {
+                // Sign-out successful.
+            }).catch((error) => {
+                // An error happened.
+            })
+            .finally(() => {
+                setLoading(false);
+            });
         ;
     }
 
@@ -133,6 +138,7 @@ const useFirebase = () => {
             body: JSON.stringify(user)
         })
     }
+
     //get all order info from database
     useEffect(() => {
         fetch('https://boiling-escarpment-25426.herokuapp.com/orderedCars/all')
@@ -140,12 +146,21 @@ const useFirebase = () => {
             .then(data => setManageAllOrders(data))
     }, [])
 
+    //get my order info from database with email
+    useEffect(() => {
+        fetch(`https://boiling-escarpment-25426.herokuapp.com/orderedCars/${user?.email}`)
+            .then(res => res.json())
+            .then(data => setManageMyOrders(data))
+    }, [user.email])
+
     return {
         user,
         admin,
         error,
         loading,
         jwtToken,
+        manageMyOrders,
+        setManageMyOrders,
         manageAllOrders,
         setManageAllOrders,
         registerWithEmailPassword,

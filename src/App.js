@@ -7,6 +7,7 @@ import Home from './Components/Pages/Home/Home/Home';
 import Login from './Components/Pages/Login/Login';
 import Register from './Components/Pages/Login/Register/Register';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -26,9 +27,9 @@ function App() {
             <Route path='/dashboard'>
               <Dashboard></Dashboard>
             </Route>
-            <Route path='/carDetails/:detailId'>
+            <PrivateRoute path='/carDetails/:detailId'>
               <DetailsOfCar></DetailsOfCar>
-            </Route>
+            </PrivateRoute>
             <Route path='/login'>
               <Login></Login>
             </Route>

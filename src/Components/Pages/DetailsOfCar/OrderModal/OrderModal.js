@@ -6,6 +6,7 @@ import TextField from '@mui/material/TextField';
 import { useForm } from "react-hook-form";
 import useAuth from '../../../../Hooks/useAuth';
 import { Button } from '@mui/material';
+import { useHistory } from 'react-router';
 
 
 const style = {
@@ -25,6 +26,7 @@ const style2 = {
 }
 
 const OrderModal = ({ openModal, handleClose, carDetails }) => {
+    const history = useHistory()
     const { user } = useAuth();
     const { register, handleSubmit, reset } = useForm();
     //SEND ordered data to DB through BackEnd
@@ -32,6 +34,7 @@ const OrderModal = ({ openModal, handleClose, carDetails }) => {
         const result = window.confirm('Are you sure to get this car??');
         if (result) {
             data.email = user.email;
+            data.status = 'Pending';
             data.carDetails = carDetails;
             fetch('https://boiling-escarpment-25426.herokuapp.com/orderedCars', {
                 method: 'POST',
@@ -40,8 +43,9 @@ const OrderModal = ({ openModal, handleClose, carDetails }) => {
                 },
                 body: JSON.stringify(data)
             })
-            reset();
             alert('Ordered Placed Successfully');
+            reset();
+            history.push('/explore_all_cars')
         }
     };
     return (

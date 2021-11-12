@@ -8,8 +8,8 @@ import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
 import useAuth from '../../../../../Hooks/useAuth';
 
-const ManageOrderCard = ({ manageOrders }) => {
-    const { manageAllOrders, setManageAllOrders } = useAuth()
+const ManageMyOrderCard = ({ manageOrders }) => {
+    const { manageMyOrders, setManageMyOrders } = useAuth()
     const { _id, name, email, status } = manageOrders;
     const { picture, price, details } = manageOrders.carDetails;
     const handleDelete = () => {
@@ -22,8 +22,8 @@ const ManageOrderCard = ({ manageOrders }) => {
                 .then(data => {
                     if (data.deletedCount > 0) {
                         alert("DELETE Successfully");
-                        const remain = manageAllOrders.filter(manageAllOrder => manageAllOrder._id !== _id);
-                        setManageAllOrders(remain);
+                        const remain = manageMyOrders.filter(manageAllOrder => manageAllOrder._id !== _id);
+                        setManageMyOrders(remain);
                     }
                 })
         }
@@ -71,4 +71,4 @@ const ManageOrderCard = ({ manageOrders }) => {
     );
 };
 
-export default ManageOrderCard;
+export default ManageMyOrderCard;

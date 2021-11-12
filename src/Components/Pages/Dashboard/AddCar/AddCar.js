@@ -51,66 +51,79 @@ const AddCar = () => {
                 }}>EXPLORE A NEW CAR</p>
                 <h2>ADD BRAND NEW CARD</h2>
             </div>
-            <form style={{ textAlign: 'center' }} className='w-75 m-auto' onSubmit={handleSubmit(addNewCar)} >
-                <Typography id="modal-modal-title" variant="h5" component="h2">
-                    Add a New Car
-                </Typography>
-                <TextField
-                    required
-                    {...register("clientName")}
-                    defaultValue={user.displayName}
-                    id="standard-basic"
-                    label="Your Name"
-                    type='text'
-                    variant="standard"
-                    sx={style2}
-                />
-                <TextField
-                    disabled
-                    {...register("email")}
-                    defaultValue={user.email}
-                    id="standard-basic"
-                    label="Email"
-                    type='email'
-                    variant="standard"
-                    sx={style2}
-                />
-                <TextField
-                    required
-                    {...register("name")}
-                    id="standard-basic"
-                    label="Car Name"
-                    type='text'
-                    variant="standard"
-                    sx={style2}
-                />
-                <TextField
-                    required
-                    {...register("picture")}
-                    id="standard-basic"
-                    label="Car IMG URL"
-                    variant="standard"
-                    sx={style2}
-                />
-                <TextField
-                    required
-                    {...register("price")}
-                    id="standard-basic"
-                    label="Car Price"
-                    variant="standard"
-                    type='number'
-                    sx={style2}
-                />
-                <TextField
-                    required
-                    {...register("details")}
-                    id="standard-textarea"
-                    label="Car Details"
-                    variant="standard"
-                    sx={style2}
-                />
-                <Button type='submit' sx={{ width: 'fitContent', textAlign: 'center', fontWeight: 'bold', margin: '20px auto', display: 'block' }} variant="outlined">Add Car</Button>
-            </form>
+            <div style={{
+                backgroundImage: 'url(https://i.ibb.co/D8qx1QP/carsBg.jpg)',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover'
+            }}>
+                <form style={{ textAlign: 'center' }}
+                    className='w-75 m-auto'
+                    onSubmit={handleSubmit(addNewCar)} >
+                    <Typography
+                        id="modal-modal-title"
+                        variant="h5"
+                        component="h2">
+                        Add a New Car
+                    </Typography>
+                    <TextField
+                        required
+                        {...register("clientName")}
+                        defaultValue={user.displayName}
+                        id="standard-basic"
+                        label="Your Name"
+                        type='text'
+                        variant="standard"
+                        sx={style2}
+                    />
+                    <TextField
+                        disabled
+                        {...register("email")}
+                        defaultValue={user.email}
+                        id="standard-basic"
+                        label="Email"
+                        type='email'
+                        variant="standard"
+                        sx={style2}
+                    />
+                    <TextField
+                        required
+                        {...register("name")}
+                        id="standard-basic"
+                        label="Car Name"
+                        type='text'
+                        variant="standard"
+                        sx={style2}
+                    />
+                    <TextField
+                        required
+                        {...register("picture")}
+                        id="standard-basic"
+                        label="Car IMG URL"
+                        variant="standard"
+                        sx={style2}
+                    />
+                    <TextField
+                        required
+                        {...register("price")}
+                        id="standard-basic"
+                        label="Car Price"
+                        variant="standard"
+                        type='number'
+                        sx={style2}
+                    />
+                    <TextField
+                        required
+                        {...register("details")}
+                        id="standard-textarea"
+                        label="Car Details"
+                        variant="standard"
+                        sx={style2}
+                    />
+                    <Button type='submit' sx={{ width: 'fitContent', textAlign: 'center', fontWeight: 'bold', margin: '20px auto', display: 'block' }} variant="outlined">Add Car</Button>
+                </form>
+            </div>
+
+
         </div>
     );
 };

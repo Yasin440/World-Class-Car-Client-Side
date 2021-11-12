@@ -11,7 +11,7 @@ const useFirebase = () => {
     const [error, setError] = useState();
     const [loading, setLoading] = useState(true);
     const [manageAllOrders, setManageAllOrders] = useState();
-    // const [admin, setAdmin] = useState(false);
+    const [admin, setAdmin] = useState(false);
     const [jwtToken, setJwtToken] = useState('');
 
 
@@ -101,16 +101,16 @@ const useFirebase = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    //get admin validation in true of false
-    // useEffect(() => {
-    //     fetch(`http://localhost:4000/users/${user.email}`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setAdmin(data.admin);
-    //         })
-    // }, [user.email])
+    //== get admin validation in true of false ==//
+    useEffect(() => {
+        fetch(`https://boiling-escarpment-25426.herokuapp.com/client/isAdmin/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setAdmin(data.admin);
+            })
+    }, [user.email])
 
-    //logOut user
+    //***/== logOut user ==/***//
     const logOut = () => {
         setLoading(true);
         signOut(auth).then(() => {
@@ -122,10 +122,10 @@ const useFirebase = () => {
         ;
     }
 
-    // //save user info to database
+    //***/== save user info to database ==/***//
     const saveUserDB = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('http://localhost:4000/clients', {
+        fetch('https://boiling-escarpment-25426.herokuapp.com/clients', {
             method: method,
             headers: {
                 'content-type': 'application/json'
@@ -135,14 +135,14 @@ const useFirebase = () => {
     }
     //get all order info from database
     useEffect(() => {
-        fetch('http://localhost:4000/orderedCars/all')
+        fetch('https://boiling-escarpment-25426.herokuapp.com/orderedCars/all')
             .then(res => res.json())
             .then(data => setManageAllOrders(data))
     }, [])
 
     return {
         user,
-        // admin,
+        admin,
         error,
         loading,
         jwtToken,

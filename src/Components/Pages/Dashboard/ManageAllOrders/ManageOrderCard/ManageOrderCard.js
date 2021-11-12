@@ -15,7 +15,7 @@ const ManageOrderCard = ({ manageOrders }) => {
     const handleDelete = () => {
         const confirm = window.confirm("Are You Sure To DELETE This CarsOrder..?");
         if (confirm) {
-            fetch(`http://localhost:4000/orderedCars/delete/${_id}`, {
+            fetch(`https://boiling-escarpment-25426.herokuapp.com/orderedCars/delete/${_id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())

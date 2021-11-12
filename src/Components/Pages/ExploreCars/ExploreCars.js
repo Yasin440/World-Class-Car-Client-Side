@@ -7,7 +7,7 @@ import DreamCarCard from '../Home/DreamsCar/DreamCarCard/DreamCarCard';
 const ExploreCars = () => {
     const [cars, setCars] = useState();
     useEffect(() => {
-        fetch('http://localhost:4000/cars/all')
+        fetch('https://boiling-escarpment-25426.herokuapp.com/cars/all')
             .then(res => res.json())
             .then(data => setCars(data))
     }, [])

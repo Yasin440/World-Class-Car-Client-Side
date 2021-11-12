@@ -33,7 +33,7 @@ const OrderModal = ({ openModal, handleClose, carDetails }) => {
         if (result) {
             data.email = user.email;
             data.carDetails = carDetails;
-            fetch('http://localhost:4000/orderedCars', {
+            fetch('https://boiling-escarpment-25426.herokuapp.com/orderedCars', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

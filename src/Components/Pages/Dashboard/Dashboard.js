@@ -18,11 +18,14 @@ import { ListItem, ListItemButton, ListItemText } from '@mui/material';
 import Payment from './Payment/Payment';
 import ManageAllOrders from './ManageAllOrders/ManageAllOrders';
 import AddCar from './AddCar/AddCar';
+import MyOrder from './MyOrder/MyOrder';
+import PrivateAdminRoute from '../../../PrivateRoute/PrivateAdminRoute';
+import AddAdmin from './AddAdmin/AddAdmin';
 
 const drawerWidth = 200;
 
 const Dashboard = (props) => {
-    const { user, logOut } = useAuth();
+    const { user, logOut, admin } = useAuth();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
@@ -55,20 +58,6 @@ const Dashboard = (props) => {
                         </ListItemButton>
                     </ListItem>
                 </NavLink>
-                <NavLink to={`${url}/add_admin`} style={{ textDecoration: 'none' }}>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemText primary="Add Admin" />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
-                <NavLink to={`${url}/manage_all_order`} style={{ textDecoration: 'none' }}>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemText primary="Manage All Order" />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
                 <NavLink to={`${url}`} style={{ textDecoration: 'none' }}>
                     <ListItem disablePadding>
                         <ListItemButton>
@@ -76,13 +65,32 @@ const Dashboard = (props) => {
                         </ListItemButton>
                     </ListItem>
                 </NavLink>
-                <NavLink to={`${url}/dashboard_add_car`} style={{ textDecoration: 'none' }}>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemText primary="Add Car" />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
+                {admin &&
+                    <>
+                        <NavLink to={`${url}/add_admin`} style={{ textDecoration: 'none' }}>
+                            <ListItem disablePadding>
+                                <ListItemButton>
+                                    <ListItemText primary="Add Admin" />
+                                </ListItemButton>
+                            </ListItem>
+                        </NavLink>
+                        <NavLink to={`${url}/manage_all_order`} style={{ textDecoration: 'none' }}>
+                            <ListItem disablePadding>
+                                <ListItemButton>
+                                    <ListItemText primary="Manage All Order" />
+                                </ListItemButton>
+                            </ListItem>
+                        </NavLink>
+                        <NavLink to={`${url}/dashboard_add_car`} style={{ textDecoration: 'none' }}>
+                            <ListItem disablePadding>
+                                <ListItemButton>
+                                    <ListItemText primary="Add Car" />
+                                </ListItemButton>
+                            </ListItem>
+                        </NavLink>
+                    </>
+                }
+
                 <NavLink to={`${url}/dashboard_review`} style={{ textDecoration: 'none' }}>
                     <ListItem disablePadding>
                         <ListItemButton>
@@ -174,14 +182,18 @@ const Dashboard = (props) => {
             >
                 <Toolbar />
                 <Switch>
-                    <Route path={`${path}/dashboard_add_car`}>
+                    <Route exact path={`${path}`}>
+                        <MyOrder></MyOrder>
+                    </Route>
+                    <PrivateAdminRoute path={`${path}/dashboard_add_car`}>
                         <AddCar></AddCar>
-                    </Route>
-                    <Route path={`${path}/add_admin`}>
-                    </Route>
-                    <Route path={`${path}/manage_all_order`}>
+                    </PrivateAdminRoute>
+                    <PrivateAdminRoute path={`${path}/add_admin`}>
+                        <AddAdmin></AddAdmin>
+                    </PrivateAdminRoute>
+                    <PrivateAdminRoute path={`${path}/manage_all_order`}>
                         <ManageAllOrders></ManageAllOrders>
-                    </Route>
+                    </PrivateAdminRoute>
                     <Route path={`${path}/dashboard_review`}>
                     </Route>
                     <Route path={`${path}/dashboard_payment`}>

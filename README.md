@@ -1,8 +1,15 @@
-# Getting Started with Create React App
+# Getting Started to review this app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project live site [World Class Car](https://world-class-car.web.app).
 
-## Available Scripts
+## Available Features
+*React based web application.
+*Google firebase authentication system.
+*React-router-dom.
+*React-nasting-route.
+*Emplement admin user.
+*MongoDB database.
+
 
 In the project directory, you can run:
 

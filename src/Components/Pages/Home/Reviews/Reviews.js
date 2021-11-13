@@ -1,7 +1,14 @@
-import { Container } from '@mui/material';
-import React from 'react';
+import { CircularProgress, Container, Grid } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import ReviewCard from './ReviewCard/ReviewCard';
 
 const Reviews = () => {
+    const [reviews, setReviews] = useState();
+    useEffect(() => {
+        fetch('http://localhost:4000/reviews')
+            .then(res => res.json())
+            .then(data => setReviews(data))
+    }, [])
     return (
         <Container>
             <div style={{
@@ -17,9 +24,24 @@ const Reviews = () => {
                     color: 'white',
                     fontWeight: 'bold'
                 }}>Wall of Love</p>
-                <h2>Happy Clients Reviews</h2>
+                <h3>Happy Clients Reviews</h3>
             </div>
+            {!reviews ?
+                <div style={{ textAlign: 'center' }}>
+                    <CircularProgress sx={{ my: 3 }} />
+                </div>
+                :
+                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                    {
+                        reviews?.map(review => <ReviewCard
+                            key={review._id}
+                            review={review}
+                        ></ReviewCard>)
+                    }
+                </Grid>
+            }
         </Container>
+
     );
 };
 

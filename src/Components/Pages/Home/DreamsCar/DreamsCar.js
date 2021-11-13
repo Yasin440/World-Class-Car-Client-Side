@@ -10,7 +10,7 @@ const DreamsCar = () => {
             .then(data => setCars(data))
     }, [])
     return (
-        <Container>
+        <Container sx={{ marginBottom: '5rem' }}>
             <div style={{
                 width: 'fit-content',
                 margin: '4rem auto',

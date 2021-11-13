@@ -8,6 +8,7 @@ initializeFirebase();
 const useFirebase = () => {
     const auth = getAuth();
     const [user, setUser] = useState({});
+    const [cars, setCars] = useState();
     const [error, setError] = useState();
     const [loading, setLoading] = useState(true);
     const [admin, setAdmin] = useState(false);
@@ -103,15 +104,6 @@ const useFirebase = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    //== get admin validation in true of false ==//
-    useEffect(() => {
-        fetch(`https://boiling-escarpment-25426.herokuapp.com/client/isAdmin/${user.email}`)
-            .then(res => res.json())
-            .then(data => {
-                setAdmin(data.admin);
-            })
-    }, [user.email])
-
     //***/== logOut user ==/***//
     const logOut = () => {
         setLoading(true);
@@ -139,6 +131,23 @@ const useFirebase = () => {
         })
     }
 
+    //== get admin validation in true of false ==//
+    useEffect(() => {
+        fetch(`https://boiling-escarpment-25426.herokuapp.com/client/isAdmin/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setAdmin(data.admin);
+            })
+    }, [user.email])
+
+    //== get all cars ==//
+    useEffect(() => {
+        fetch('https://boiling-escarpment-25426.herokuapp.com/cars/all')
+            .then(res => res.json())
+            .then(data => setCars(data))
+    }, [])
+
+
     //get all order info from database
     useEffect(() => {
         fetch('https://boiling-escarpment-25426.herokuapp.com/orderedCars/all')
@@ -155,6 +164,8 @@ const useFirebase = () => {
 
     return {
         user,
+        cars,
+        setCars,
         admin,
         error,
         loading,

@@ -83,10 +83,10 @@ const Dashboard = (props) => {
                                 </ListItemButton>
                             </ListItem>
                         </NavLink>
-                        <NavLink to={`${url}/manage_cars`} style={{ textDecoration: 'none' }}>
+                        <NavLink to={`${url}/manage_all_cars`} style={{ textDecoration: 'none' }}>
                             <ListItem disablePadding>
                                 <ListItemButton>
-                                    <ListItemText primary="Manage Cars" />
+                                    <ListItemText primary="Manage All Cars" />
                                 </ListItemButton>
                             </ListItem>
                         </NavLink>
@@ -203,7 +203,7 @@ const Dashboard = (props) => {
                     <PrivateAdminRoute path={`${path}/manage_all_order`}>
                         <ManageAllOrders></ManageAllOrders>
                     </PrivateAdminRoute>
-                    <PrivateAdminRoute path={`${path}/manage_cars`}>
+                    <PrivateAdminRoute path={`${path}/manage_all_cars`}>
                         <ManageAllCars></ManageAllCars>
                     </PrivateAdminRoute>
                     <Route path={`${path}/dashboard_review`}>

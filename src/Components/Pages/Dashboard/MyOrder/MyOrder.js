@@ -12,7 +12,7 @@ const MyOrder = () => {
         <Container>
             <div style={{
                 width: 'fit-content',
-                margin: '1rem auto',
+                marginBottom: '3rem',
                 textAlign: 'center',
                 padding: '0 2rem',
                 borderLeft: '4px solid #1e88e5',

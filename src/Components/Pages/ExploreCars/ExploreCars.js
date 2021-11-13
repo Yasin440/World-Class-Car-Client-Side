@@ -1,16 +1,13 @@
 import { CircularProgress, Container, Grid } from '@mui/material';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
 import DreamCarCard from '../Home/DreamsCar/DreamCarCard/DreamCarCard';
+import useAuth from '../../../Hooks/useAuth';
+
 
 const ExploreCars = () => {
-    const [cars, setCars] = useState();
-    useEffect(() => {
-        fetch('https://boiling-escarpment-25426.herokuapp.com/cars/all')
-            .then(res => res.json())
-            .then(data => setCars(data))
-    }, [])
+    const { cars } = useAuth();
     return (
         <>
             <Header></Header>

@@ -11,10 +11,16 @@ const Home = () => {
             <Header></Header>
             <Banner></Banner>
             <DreamsCar></DreamsCar>
-            <Reviews></Reviews>
+            <div style={{
+                backgroundColor: '#e6e6e6fa',
+                paddingTop: '1px',
+                paddingBottom: '5rem'
+            }}>
+                <Reviews></Reviews>
+            </div>
             <Portfolio></Portfolio>
             <Footer></Footer>
-        </div>
+        </div >
     );
 };
 

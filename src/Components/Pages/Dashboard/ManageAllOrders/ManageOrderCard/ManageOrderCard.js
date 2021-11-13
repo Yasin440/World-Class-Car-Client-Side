@@ -63,8 +63,10 @@ const ManageOrderCard = ({ manageOrders }) => {
                         onClick={handleDelete}
                         sx={{ fontWeight: 'bold' }}
                         startIcon={<DeleteIcon />}
+                        color="error"
                         variant="outlined">Delete
                     </Button>
+                    <Button variant="outlined">Approve</Button>
                 </CardActions>
             </Card>
         </Grid>

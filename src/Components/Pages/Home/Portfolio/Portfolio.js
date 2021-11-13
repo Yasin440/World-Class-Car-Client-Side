@@ -19,7 +19,7 @@ const Portfolio = () => {
                             fontWeight: 'bold',
                             textTransform: 'uppercase'
                         }}>Check some your crush</p>
-                        <h2>FEATURES PORTFOLIO</h2>
+                        <h3>FEATURES PORTFOLIO</h3>
 
                     </div>
                     <div className="row justify-content-center mb-5">

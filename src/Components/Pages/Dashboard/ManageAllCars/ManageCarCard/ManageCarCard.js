@@ -8,22 +8,20 @@ import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
 import useAuth from '../../../../../Hooks/useAuth';
 
-const ManageMyOrderCard = ({ manageOrders }) => {
-    const { manageMyOrders, setManageMyOrders } = useAuth()
-    const { _id, name, email, status } = manageOrders;
-    const { picture, price, details } = manageOrders.carDetails;
+const ManageCarCard = ({ car }) => {
+    const { cars, setCars } = useAuth()
     const handleDelete = () => {
         const confirm = window.confirm("Are You Sure To DELETE This CarsOrder..?");
         if (confirm) {
-            fetch(`https://boiling-escarpment-25426.herokuapp.com/orderedCars/delete/${_id}`, {
+            fetch(`http://localhost:4000/all_Cars/delete/${car._id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
                         alert("DELETE Successfully");
-                        const remain = manageMyOrders.filter(manageAllOrder => manageAllOrder._id !== _id);
-                        setManageMyOrders(remain);
+                        const remain = cars.filter(data => data._id !== car._id);
+                        setCars(remain);
                     }
                 })
         }
@@ -36,26 +34,17 @@ const ManageMyOrderCard = ({ manageOrders }) => {
                     component="img"
                     alt="green iguana"
                     height="200"
-                    image={picture}
+                    image={car.picture}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {manageOrders.carDetails.name}
+                        {car.name}
                     </Typography>
                     <Typography sx={{ fontWeight: 'bold' }} variant="subtitle2" gutterBottom component="div">
-                        Price: ${price}
-                    </Typography>
-                    <Typography sx={{ fontWeight: 'bold' }} variant="subtitle2" gutterBottom component="div">
-                        Order By: {name}
-                    </Typography>
-                    <Typography sx={{ fontWeight: 'bold' }} variant="subtitle2" gutterBottom component="div">
-                        Status: {status}
-                    </Typography>
-                    <Typography sx={{ fontWeight: 'bold' }} variant="subtitle2" gutterBottom component="div">
-                        Email: {email}
+                        Price: ${car.price}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        {details.slice(0, 110)}
+                        {car.details.slice(0, 110)}
                     </Typography>
                 </CardContent>
                 <CardActions>
@@ -72,4 +61,4 @@ const ManageMyOrderCard = ({ manageOrders }) => {
     );
 };
 
-export default ManageMyOrderCard;
+export default ManageCarCard;

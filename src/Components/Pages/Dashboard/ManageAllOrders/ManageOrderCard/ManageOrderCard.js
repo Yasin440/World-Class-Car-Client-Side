@@ -29,6 +29,19 @@ const ManageOrderCard = ({ manageOrders }) => {
         }
 
     }
+    const handleApprovedStatus = () => {
+        fetch(`https://boiling-escarpment-25426.herokuapp.com/ordered_car/status/${_id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    alert("Approved Successfully. Please ReloadPage..");
+                }
+
+            })
+
+    }
     return (
         <Grid item xs={4} sm={4} md={4}>
             <Card sx={{ maxWidth: 345 }}>
@@ -66,7 +79,10 @@ const ManageOrderCard = ({ manageOrders }) => {
                         color="error"
                         variant="outlined">Delete
                     </Button>
-                    <Button variant="outlined">Approve</Button>
+                    <Button
+                        variant="outlined"
+                        onClick={handleApprovedStatus}
+                    >Approve</Button>
                 </CardActions>
             </Card>
         </Grid>

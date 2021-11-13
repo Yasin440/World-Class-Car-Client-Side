@@ -4,12 +4,14 @@ import DreamsCar from '../DreamsCar/DreamsCar';
 import Portfolio from '../Portfolio/Portfolio';
 import Header from '../../../Shared/Header/Header';
 import Footer from '../../../Shared/Footer/Footer';
+import Reviews from '../Reviews/Reviews';
 const Home = () => {
     return (
         <div>
             <Header></Header>
             <Banner></Banner>
             <DreamsCar></DreamsCar>
+            <Reviews></Reviews>
             <Portfolio></Portfolio>
             <Footer></Footer>
         </div>

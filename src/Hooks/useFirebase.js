@@ -55,7 +55,7 @@ const useFirebase = () => {
             .then(result => setUser(result.user))
             .catch(error => {
                 if (error) {
-                    setError(error.message)
+                    setError(error.message);
                 }
                 else {
                     alert('Registration Successful');

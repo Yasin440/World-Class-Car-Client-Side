@@ -5,11 +5,12 @@ import useAuth from '../../../Hooks/useAuth';
 import { useLocation, useHistory } from "react-router";
 import Header from '../../Shared/Header/Header';
 import Footer from '../../Shared/Footer/Footer';
+import Alert from '@mui/material/Alert';
 
 const Login = () => {
     const [loginData, setLoginData] = useState();
-    const { signInWithGoogle, logInWithEmailPassword } = useAuth();
-
+    const { signInWithGoogle, logInWithEmailPassword, error } = useAuth();
+    const [alert, serAlert] = useState(false);
     const location = useLocation();
     const history = useHistory();
     const redirect_url = location.state?.from || '/home';
@@ -25,7 +26,13 @@ const Login = () => {
     const logInWithEmailPass = (email, password) => {
         logInWithEmailPassword(email, password)
             .then(result => {
-                history.push(redirect_url);
+                if (error) {
+                    serAlert(true);
+                    return;
+                }
+                else {
+                    history.push(redirect_url);
+                }
             })
     }
     //get input field value
@@ -52,6 +59,9 @@ const Login = () => {
                         <Typography variant="h6" gutterBottom component="div">
                             Please Login
                         </Typography>
+                        {alert &&
+                            <Alert severity="error">Username Or Password is Not Correct..!!</Alert>
+                        }
                         <form onSubmit={handleLogInWithEmailPass}>
                             <TextField
                                 required

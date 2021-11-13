@@ -1,3 +1,4 @@
+import { ListItemText } from '@mui/material';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
@@ -16,15 +17,17 @@ const Header = () => {
                     <div className="pages navbar-nav me-auto mb-2 mb-lg-0">
                         <NavLink to="/home">Home</NavLink>
                         <NavLink to="/explore_all_cars">Explore.Cars</NavLink>
+                        {user?.email &&
+                            <span className="pages navbar-nav me-auto mb-2 mb-lg-0"><NavLink to="/dashboard">Dashboard</NavLink></span>
+                        }
                     </div>
                     <form className="d-flex">
                         {user?.email ?
                             <>
-                                {/* <small className='me-2 user'>
-                                    <p className='m-0'>Sign as:</p>
-                                    <p className='m-0'>{user?.displayName}</p>
-                                </small> */}
-                                <span className="pages navbar-nav me-auto mb-2 mb-lg-0"><NavLink to="/dashboard">Dashboard</NavLink></span>
+                                <div style={{ display: 'flex', alignItems: 'center', marginRight: '9px' }}>
+                                    <i className="fas fa-user-circle me-1" style={{ color: 'white', fontSize: '1.2rem' }}></i>
+                                    <ListItemText sx={{ fontWeight: 'bold', color: 'white' }} primary={user?.displayName} />
+                                </div>
 
                                 <button onClick={logOut} className="logOut navButton"><i className="fas fa-sign-out-alt me-1"></i>logOut</button>
                             </>

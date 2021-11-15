@@ -6,7 +6,9 @@ import useAuth from '../Hooks/useAuth';
 const PrivateAdminRoute = ({ children, ...rest }) => {
     const { user, loading, admin } = useAuth();
     if (loading) {
-        return <CircularProgress sx={{ my: 3 }} />
+        return <div style={{ textAlign: 'center' }}>
+            <CircularProgress sx={{ my: 3 }} />
+        </div>
     }
     return (
         <Route

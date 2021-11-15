@@ -23,6 +23,7 @@ import PrivateAdminRoute from '../../../PrivateRoute/PrivateAdminRoute';
 import AddAdmin from './AddAdmin/AddAdmin';
 import ManageAllCars from './ManageAllCars/ManageAllCars';
 import AddReview from './AddReview/AddReview';
+import { CircularProgress } from '@mui/material';
 
 const drawerWidth = 200;
 
@@ -194,18 +195,25 @@ const Dashboard = (props) => {
                     <Route exact path={`${path}`}>
                         <MyOrder></MyOrder>
                     </Route>
-                    <PrivateAdminRoute path={`${path}/dashboard_add_car`}>
-                        <AddCar></AddCar>
-                    </PrivateAdminRoute>
-                    <PrivateAdminRoute path={`${path}/add_admin`}>
-                        <AddAdmin></AddAdmin>
-                    </PrivateAdminRoute>
-                    <PrivateAdminRoute path={`${path}/manage_all_order`}>
-                        <ManageAllOrders></ManageAllOrders>
-                    </PrivateAdminRoute>
-                    <PrivateAdminRoute path={`${path}/manage_all_cars`}>
-                        <ManageAllCars></ManageAllCars>
-                    </PrivateAdminRoute>
+                    {!admin ?
+                        <div style={{ textAlign: 'center' }}>
+                            <CircularProgress sx={{ my: 3 }} />
+                        </div>
+                        :
+                        <>
+                            <PrivateAdminRoute path={`${path}/dashboard_add_car`}>
+                                <AddCar></AddCar>
+                            </PrivateAdminRoute>
+                            <PrivateAdminRoute path={`${path}/add_admin`}>
+                                <AddAdmin></AddAdmin>
+                            </PrivateAdminRoute>
+                            <PrivateAdminRoute path={`${path}/manage_all_order`}>
+                                <ManageAllOrders></ManageAllOrders>
+                            </PrivateAdminRoute>
+                            <PrivateAdminRoute path={`${path}/manage_all_cars`}>
+                                <ManageAllCars></ManageAllCars>
+                            </PrivateAdminRoute>
+                        </>}
                     <Route path={`${path}/dashboard_review`}>
                         <AddReview></AddReview>
                     </Route>

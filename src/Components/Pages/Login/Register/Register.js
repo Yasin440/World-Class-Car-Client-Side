@@ -36,7 +36,10 @@ const Register = () => {
                     <Typography variant="h6" gutterBottom component="div">
                         Please Register
                     </Typography>
-                    {loading && <CircularProgress sx={{ my: 3 }} />}
+                    {loading &&
+                        <div style={{ textAlign: 'center' }}>
+                            <CircularProgress sx={{ my: 3 }} />
+                        </div>}
                     <form onSubmit={handleLoginSubmit}>
                         {error &&
                             <Alert severity="error">{error}</Alert>

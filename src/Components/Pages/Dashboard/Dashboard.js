@@ -195,6 +195,12 @@ const Dashboard = (props) => {
                     <Route exact path={`${path}`}>
                         <MyOrder></MyOrder>
                     </Route>
+                    <Route path={`${path}/dashboard_review`}>
+                        <AddReview></AddReview>
+                    </Route>
+                    <Route path={`${path}/dashboard_payment`}>
+                        <Payment></Payment>
+                    </Route>
                     {!admin ?
                         <div style={{ textAlign: 'center' }}>
                             <CircularProgress sx={{ my: 3 }} />
@@ -213,13 +219,8 @@ const Dashboard = (props) => {
                             <PrivateAdminRoute path={`${path}/manage_all_cars`}>
                                 <ManageAllCars></ManageAllCars>
                             </PrivateAdminRoute>
-                        </>}
-                    <Route path={`${path}/dashboard_review`}>
-                        <AddReview></AddReview>
-                    </Route>
-                    <Route path={`${path}/dashboard_payment`}>
-                        <Payment></Payment>
-                    </Route>
+                        </>
+                    }
                 </Switch>
             </Box>
         </Box>

@@ -11,8 +11,9 @@ const MyOrder = () => {
     return (
         <Container>
             <div style={{
-                width: 'fit-content',
+                margin: 'auto',
                 marginBottom: '3rem',
+                width: 'fit-content',
                 textAlign: 'center',
                 padding: '0 2rem',
                 borderLeft: '4px solid #1e88e5',

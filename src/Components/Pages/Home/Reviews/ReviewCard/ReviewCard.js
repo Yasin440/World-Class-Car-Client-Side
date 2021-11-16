@@ -22,7 +22,7 @@ const ReviewCard = ({ review }) => {
                         {name}
                     </Typography>
                     <Typography component="legend">Rate of Review</Typography>
-                    <Rating name="read-only" value={rating} readOnly />
+                    <Rating name="read-only" value={rating.toString()} readOnly />
                     <Typography variant="body2" color="text.secondary">
                         {Comment.slice(0, 30)}
                     </Typography>

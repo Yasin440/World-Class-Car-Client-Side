@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { CircularProgress, Grid } from '@mui/material';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React, { useEffect, useState } from 'react';
@@ -17,17 +17,35 @@ const Payment = () => {
     }, [id])
     return (
         <>
-            <Grid sx={{ textAlign: 'center' }}>
-                <h1>{paymentFor?.carDetails.name}</h1>
+            <div style={{ textAlign: 'center' }}>
+                <h1 >{paymentFor?.carDetails.name}</h1>
                 <h5>Price: ${paymentFor?.carDetails.price}</h5>
-                <img style={{ borderRadius: '2rem' }} item xs={12} src={paymentFor?.carDetails.picture} alt="img" />
-                <h5 style={{ margin: '2rem 0' }}>Pay for ^=^</h5>
+            </div>
+            <Grid sx={{ alignItems: 'center' }} container spacing={2}>
+                <Grid
+                    item xs={12}
+                    md={6}
+                    sx={{ textAlign: 'center' }}>
+                    <img
+                        style={{ borderRadius: '2rem', width: '100%', margin: '2rem 0' }}
+                        xs={12}
+                        src={paymentFor?.carDetails.picture} alt="img" />
+                </Grid>
+                <Grid sx={{ margin: '2rem 0' }} item md={6} xs={12}>
+                    {!paymentFor?.carDetails.price ?
+                        <div style={{ textAlign: 'center' }}>
+                            <CircularProgress sx={{ my: 3 }} />
+                        </div>
+                        :
+                        <Elements stripe={stripePromise}>
+                            <CheckoutForm
+                                paymentFor={paymentFor}
+                            />
+                        </Elements>
+                    }
+                </Grid>
+                <p>{paymentFor?.carDetails.details}</p>
             </Grid>
-            <Elements stripe={stripePromise}>
-                <CheckoutForm
-                    paymentFor={paymentFor}
-                />
-            </Elements>
         </>
 
     );

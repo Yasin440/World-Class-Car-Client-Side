@@ -108,13 +108,6 @@ const Dashboard = (props) => {
                         </ListItemButton>
                     </ListItem>
                 </NavLink>
-                <NavLink to={`${url}/dashboard_payment`} style={{ textDecoration: 'none' }}>
-                    <ListItem disablePadding>
-                        <ListItemButton>
-                            <ListItemText primary="Payment" />
-                        </ListItemButton>
-                    </ListItem>
-                </NavLink>
                 <NavLink to='/home' style={{ textDecoration: 'none' }}>
                     <ListItem disablePadding>
                         <ListItemButton onClick={logOut}>
@@ -198,7 +191,7 @@ const Dashboard = (props) => {
                     <Route path={`${path}/dashboard_review`}>
                         <AddReview></AddReview>
                     </Route>
-                    <Route path={`${path}/dashboard_payment`}>
+                    <Route path={`${path}/payment/:id`}>
                         <Payment></Payment>
                     </Route>
                     {!admin ?
@@ -222,8 +215,8 @@ const Dashboard = (props) => {
                         </>
                     }
                 </Switch>
-            </Box>
-        </Box>
+            </Box >
+        </Box >
     );
 }
 

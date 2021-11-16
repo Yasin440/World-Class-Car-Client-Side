@@ -19,7 +19,7 @@ This project live site [World Class Car](https://world-class-car.web.app).
 5. User can also through review and watch others user opinion about our site in home review section..
 
 Runs the app in the development Online surver.\
-Open [Heroku_Yasin440](https://boiling-escarpment-25426.herokuapp.com) to view it in the browser.
+Open [Heroku_Yasin440](https://nameless-river-31605.herokuapp.com) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.

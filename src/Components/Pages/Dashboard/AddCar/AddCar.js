@@ -18,7 +18,7 @@ const AddCar = () => {
     const addNewCar = data => {
         const confirm = window.confirm('All info & URL Is correct?');
         if (confirm) {
-            fetch('https://boiling-escarpment-25426.herokuapp.com/addCars', {
+            fetch('https://nameless-river-31605.herokuapp.com/addCars', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

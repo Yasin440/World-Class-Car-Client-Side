@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
 import useAuth from '../../../../../Hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 const ManageMyOrderCard = ({ manageOrders }) => {
     const { manageMyOrders, setManageMyOrders } = useAuth()
@@ -15,7 +16,7 @@ const ManageMyOrderCard = ({ manageOrders }) => {
     const handleDelete = () => {
         const confirm = window.confirm("Are You Sure To DELETE This CarsOrder..?");
         if (confirm) {
-            fetch(`https://boiling-escarpment-25426.herokuapp.com/orderedCars/delete/${_id}`, {
+            fetch(`https://nameless-river-31605.herokuapp.com/orderedCars/delete/${_id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
@@ -66,6 +67,15 @@ const ManageMyOrderCard = ({ manageOrders }) => {
                         startIcon={<DeleteIcon />}
                         variant="outlined">Delete
                     </Button>
+                    <Link to={`dashboard/payment/${_id}`}>
+                        <Button
+                            sx={{ fontWeight: 'bold' }}
+                            color="secondary"
+                            variant="outlined"
+                            size="small">Payment
+                        </Button>
+                    </Link>
+
                 </CardActions>
             </Card>
         </Grid>

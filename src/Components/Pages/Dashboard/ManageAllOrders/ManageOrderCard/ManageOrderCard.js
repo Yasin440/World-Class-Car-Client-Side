@@ -15,7 +15,7 @@ const ManageOrderCard = ({ manageOrders }) => {
     const handleDelete = () => {
         const confirm = window.confirm("Are You Sure To DELETE This CarsOrder..?");
         if (confirm) {
-            fetch(`https://boiling-escarpment-25426.herokuapp.com/orderedCars/delete/${_id}`, {
+            fetch(`https://nameless-river-31605.herokuapp.com/orderedCars/delete/${_id}`, {
                 method: "DELETE"
             })
                 .then(res => res.json())
@@ -30,7 +30,7 @@ const ManageOrderCard = ({ manageOrders }) => {
 
     }
     const handleApprovedStatus = () => {
-        fetch(`https://boiling-escarpment-25426.herokuapp.com/ordered_car/status/${_id}`, {
+        fetch(`https://nameless-river-31605.herokuapp.com/ordered_car/status/${_id}`, {
             method: 'PUT'
         })
             .then(res => res.json())

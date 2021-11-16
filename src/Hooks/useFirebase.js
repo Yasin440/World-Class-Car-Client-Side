@@ -122,7 +122,7 @@ const useFirebase = () => {
     //***/== save user info to database ==/***//
     const saveUserDB = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('https://boiling-escarpment-25426.herokuapp.com/clients', {
+        fetch('https://nameless-river-31605.herokuapp.com/clients', {
             method: method,
             headers: {
                 'content-type': 'application/json'
@@ -133,7 +133,7 @@ const useFirebase = () => {
 
     //== get admin validation in true of false ==//
     useEffect(() => {
-        fetch(`https://boiling-escarpment-25426.herokuapp.com/client/isAdmin/${user.email}`)
+        fetch(`https://nameless-river-31605.herokuapp.com/client/isAdmin/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setAdmin(data.admin);
@@ -142,7 +142,7 @@ const useFirebase = () => {
 
     //== get all cars ==//
     useEffect(() => {
-        fetch('https://boiling-escarpment-25426.herokuapp.com/cars/all')
+        fetch('https://nameless-river-31605.herokuapp.com/cars/all')
             .then(res => res.json())
             .then(data => setCars(data))
     }, [])
@@ -150,14 +150,14 @@ const useFirebase = () => {
 
     //get all order info from database
     useEffect(() => {
-        fetch('https://boiling-escarpment-25426.herokuapp.com/orderedCars/all')
+        fetch('https://nameless-river-31605.herokuapp.com/orderedCars/all')
             .then(res => res.json())
             .then(data => setManageAllOrders(data))
     }, [])
 
     //get my order info from database with email
     useEffect(() => {
-        fetch(`https://boiling-escarpment-25426.herokuapp.com/orderedCars/${user?.email}`)
+        fetch(`https://nameless-river-31605.herokuapp.com/orderedCars/${user?.email}`)
             .then(res => res.json())
             .then(data => setManageMyOrders(data))
     }, [user.email])

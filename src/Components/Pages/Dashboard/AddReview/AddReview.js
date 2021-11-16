@@ -13,7 +13,7 @@ const AddReview = () => {
     const [ratingSuccess, setRatingSuccess] = useState();
     const { register, handleSubmit, reset } = useForm();
     const addReview = data => {
-        fetch('https://boiling-escarpment-25426.herokuapp.com/ratings', {
+        fetch('https://nameless-river-31605.herokuapp.com/ratings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

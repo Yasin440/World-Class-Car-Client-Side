@@ -25,7 +25,7 @@ const DetailsOfCar = () => {
     const { detailId } = useParams();
     const [carDetails, setCatDetails] = useState();
     useEffect(() => {
-        fetch(`https://boiling-escarpment-25426.herokuapp.com/carDetails/${detailId}`)
+        fetch(`https://nameless-river-31605.herokuapp.com/carDetails/${detailId}`)
             .then(res => res.json())
             .then(data => setCatDetails(data))
     }, [detailId])

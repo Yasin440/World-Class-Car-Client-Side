@@ -36,7 +36,7 @@ const OrderModal = ({ openModal, handleClose, carDetails }) => {
             data.email = user.email;
             data.status = 'Pending';
             data.carDetails = carDetails;
-            fetch('https://boiling-escarpment-25426.herokuapp.com/orderedCars', {
+            fetch('https://nameless-river-31605.herokuapp.com/orderedCars', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

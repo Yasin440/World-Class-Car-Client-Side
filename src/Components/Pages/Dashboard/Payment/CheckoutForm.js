@@ -66,13 +66,11 @@ const CheckoutForm = ({ paymentFor }) => {
         }
         else if (paymentIntent) {
             setError('');
-            setProcessing(false);
-            console.log(paymentIntent);
             const paymentInfo = {
                 amount: paymentIntent.amount,
-                transaction: paymentIntent.id
-            }
-            fetch(`https://nameless-river-31605.herokuapp.com/ordered_car/payment_status/${paymentFor._id}`, {
+                transaction: paymentIntent.id,
+            };
+            fetch(`http://localhost:4000/ordered_car/payment_status/${paymentFor._id}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
@@ -81,8 +79,10 @@ const CheckoutForm = ({ paymentFor }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    if (data.modifiedCount > 0)
+                    if (data.modifiedCount > 0) {
+                        setProcessing(false);
                         setSuccess(true);
+                    }
                 })
         }
 
@@ -111,15 +111,29 @@ const CheckoutForm = ({ paymentFor }) => {
                 {processing ?
                     <CircularProgress sx={{ width: '50%' }} />
                     :
-                    <Button
-                        sx={{ my: 3 }}
-                        type="submit"
-                        size='small'
-                        disabled={!stripe || success}
-                        variant="contained"
-                        endIcon={<PaymentIcon />}>
-                        Pay ${paymentFor?.carDetails.price}
-                    </Button>
+                    <>
+                        {!stripe || success ?
+                            <Button
+                                sx={{ my: 3 }}
+                                type="submit"
+                                size='small'
+                                disabled
+                                variant="contained"
+                                endIcon={<PaymentIcon />}>
+                                Pay ${paymentFor?.carDetails.price}
+                            </Button>
+                            :
+                            <Button
+                                sx={{ my: 3 }}
+                                type="submit"
+                                size='small'
+                                variant="contained"
+                                endIcon={<PaymentIcon />}>
+                                Pay ${paymentFor?.carDetails.price}
+                            </Button>
+                        }
+                    </>
+
                 }
 
             </form>

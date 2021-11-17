@@ -30,7 +30,7 @@ const ManageOrderCard = ({ manageOrders }) => {
 
     }
     const handleApprovedStatus = () => {
-        fetch(`https://nameless-river-31605.herokuapp.com/ordered_car/status/${_id}`, {
+        fetch(`http://localhost:4000/ordered_car/status/${_id}`, {
             method: 'PUT'
         })
             .then(res => res.json())

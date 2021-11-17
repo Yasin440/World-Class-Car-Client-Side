@@ -67,8 +67,17 @@ const CheckoutForm = ({ paymentFor }) => {
         else if (paymentIntent) {
             setError('');
             setProcessing(false);
+            console.log(paymentIntent);
+            const paymentInfo = {
+                amount: paymentIntent.amount,
+                transaction: paymentIntent.id
+            }
             fetch(`https://nameless-river-31605.herokuapp.com/ordered_car/payment_status/${paymentFor._id}`, {
-                method: 'PUT'
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(paymentInfo),
             })
                 .then(res => res.json())
                 .then(data => {
@@ -106,7 +115,7 @@ const CheckoutForm = ({ paymentFor }) => {
                         sx={{ my: 3 }}
                         type="submit"
                         size='small'
-                        disabled={!stripe}
+                        disabled={!stripe || success}
                         variant="contained"
                         endIcon={<PaymentIcon />}>
                         Pay ${paymentFor?.carDetails.price}

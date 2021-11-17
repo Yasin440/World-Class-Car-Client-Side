@@ -79,10 +79,12 @@ const ManageOrderCard = ({ manageOrders }) => {
                         color="error"
                         variant="outlined">Delete
                     </Button>
-                    <Button
-                        variant="outlined"
-                        onClick={handleApprovedStatus}
-                    >Approve</Button>
+                    {status === 'Pending' &&
+                        <Button
+                            variant="outlined"
+                            onClick={handleApprovedStatus}
+                        >Approve</Button>
+                    }
                 </CardActions>
             </Card>
         </Grid>

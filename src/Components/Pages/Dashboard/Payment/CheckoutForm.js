@@ -66,9 +66,17 @@ const CheckoutForm = ({ paymentFor }) => {
         }
         else if (paymentIntent) {
             setError('');
-            setSuccess(true);
             setProcessing(false);
+            fetch(`https://nameless-river-31605.herokuapp.com/ordered_car/payment_status/${paymentFor._id}`, {
+                method: 'PUT'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.modifiedCount > 0)
+                        setSuccess(true);
+                })
         }
+
     }
 
     return (
@@ -112,7 +120,7 @@ const CheckoutForm = ({ paymentFor }) => {
             }
             {
                 success &&
-                <Alert severity="success">Your payment process successful</Alert>
+                <Alert severity="success">Your payment process successful check your orders</Alert>
             }
         </Container>
     );

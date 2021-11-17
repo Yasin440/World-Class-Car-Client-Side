@@ -60,22 +60,36 @@ const ManageMyOrderCard = ({ manageOrders }) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button
-                        onClick={handleDelete}
-                        sx={{ fontWeight: 'bold' }}
-                        color="error"
-                        startIcon={<DeleteIcon />}
-                        variant="outlined">Delete
-                    </Button>
-                    <Link to={`dashboard/payment/${_id}`}>
-                        <Button
-                            sx={{ fontWeight: 'bold' }}
-                            color="secondary"
-                            variant="outlined"
-                            size="small">Payment
-                        </Button>
-                    </Link>
-
+                    {
+                        status === 'paid' ?
+                            <Button
+                                disabled
+                                onClick={handleDelete}
+                                sx={{ fontWeight: 'bold', mr: 1 }}
+                                color="error"
+                                startIcon={<DeleteIcon />}
+                                variant="outlined">Delete
+                            </Button>
+                            :
+                            <Button
+                                onClick={handleDelete}
+                                sx={{ fontWeight: 'bold', mr: 1 }}
+                                color="error"
+                                startIcon={<DeleteIcon />}
+                                variant="outlined">Delete
+                            </Button>
+                    }
+                    {
+                        status === 'approved' &&
+                        <Link to={`dashboard/payment/${_id}`}>
+                            <Button
+                                sx={{ fontWeight: 'bold' }}
+                                color="secondary"
+                                variant="outlined"
+                                size="small">Payment
+                            </Button>
+                        </Link>
+                    }
                 </CardActions>
             </Card>
         </Grid>

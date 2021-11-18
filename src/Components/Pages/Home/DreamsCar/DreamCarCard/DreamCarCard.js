@@ -15,7 +15,7 @@ const DreamCarCard = ({ car }) => {
                     component="img"
                     alt="green iguana"
                     height="200"
-                    image={car.picture}
+                    image={car.picture || `data:image/*;base64,${car.picture2}`}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">

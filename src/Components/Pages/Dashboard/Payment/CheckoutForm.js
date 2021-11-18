@@ -70,7 +70,7 @@ const CheckoutForm = ({ paymentFor }) => {
                 amount: paymentIntent.amount,
                 transaction: paymentIntent.id,
             };
-            fetch(`http://localhost:4000/ordered_car/payment_status/${paymentFor._id}`, {
+            fetch(`https://nameless-river-31605.herokuapp.com/ordered_car/payment_status/${paymentFor._id}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

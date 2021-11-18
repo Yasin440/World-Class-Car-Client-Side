@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { useForm } from "react-hook-form";
 import useAuth from '../../../../Hooks/useAuth';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
+import { Alert, Button } from '@mui/material';
 
 const style2 = {
     width: '75%',
@@ -13,26 +13,33 @@ const style2 = {
 const AddCar = () => {
     const { user } = useAuth();
     const { register, handleSubmit, reset } = useForm();
-
+    const [success, setSuccess] = useState(false);
+    const [img, setImg] = useState(null);
     //add new car to cars in database
     const addNewCar = data => {
-        const confirm = window.confirm('All info & URL Is correct?');
-        if (confirm) {
-            fetch('https://nameless-river-31605.herokuapp.com/addCars', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-                .then(res => res.json())
-                .then(event => {
-                    if (event.insertedId) {
-                        alert('Your Car Added to Cars to Explore')
-                        reset();
-                    }
-                })
+        if (!img & !data.picture) {
+            alert('Please add an img or an img URL..!!');
+            return;
         }
+        const formData = new FormData();
+        formData.append('picture2', img);
+        formData.append('picture', data.picture);
+        formData.append('clientName', data.clientName);
+        formData.append('name', data.name);
+        formData.append('price', data.price);
+        formData.append('details', data.details);
+        formData.append('email', user.email);
+        fetch('https://nameless-river-31605.herokuapp.com/addCars', {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(event => {
+                if (event.insertedId) {
+                    setSuccess(true);
+                    reset();
+                }
+            })
     }
     return (
         <div>
@@ -95,10 +102,18 @@ const AddCar = () => {
                         sx={style2}
                     />
                     <TextField
-                        required
                         {...register("picture")}
                         id="standard-basic"
                         label="Car IMG URL"
+                        variant="standard"
+                        sx={style2}
+                    />
+                    <TextField
+                        onChange={e => setImg(e.target.files[0])}
+                        accept='image/*'
+                        id="standard-basic"
+                        label="IMG"
+                        type="file"
                         variant="standard"
                         sx={style2}
                     />
@@ -119,6 +134,9 @@ const AddCar = () => {
                         variant="standard"
                         sx={style2}
                     />
+                    {success &&
+                        <Alert className='w-50 m-auto' severity="success">**{user.displayName} Successfully Add a Car as Admin</Alert>
+                    }
                     <Button type='submit' sx={{ width: 'fitContent', textAlign: 'center', fontWeight: 'bold', margin: '20px auto', display: 'block' }} variant="outlined">Add Car</Button>
                 </form>
             </div>

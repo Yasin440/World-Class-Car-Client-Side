@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const DreamCarCard = ({ car }) => {
     return (
         <Grid item xs={4} sm={4} md={4}>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={{ maxWidth: 345 }} data-aos="flip-right">
                 <CardMedia
                     component="img"
                     alt="green iguana"

@@ -53,16 +53,16 @@ const Login = () => {
             <Container>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={6}>
-                        <img width='90%' src="https://i.ibb.co/Jn9Kx4x/loginimg.png" alt="img" />
+                        <img width='90%' src="https://i.ibb.co/Jn9Kx4x/loginimg.png" alt="img" data-aos="flip-right" />
                     </Grid>
                     <Grid item sx={{ mt: 8 }} xs={12} md={6}>
-                        <Typography variant="h6" gutterBottom component="div">
+                        <Typography variant="h6" gutterBottom component="div" data-aos="fade-down">
                             Please Login
                         </Typography>
                         {alert &&
                             <Alert severity="error">Username Or Password is Not Correct..!!</Alert>
                         }
-                        <form onSubmit={handleLogInWithEmailPass}>
+                        <form onSubmit={handleLogInWithEmailPass} data-aos="fade-up">
                             <TextField
                                 required
                                 sx={{ width: '75%', mt: 2 }}

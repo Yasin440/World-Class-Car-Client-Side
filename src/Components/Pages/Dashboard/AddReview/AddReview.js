@@ -33,13 +33,13 @@ const AddReview = () => {
         <Container>
             <Grid container spacing={2}>
                 <Grid item sx={{ mt: 8 }} xs={12} md={6}>
-                    <Typography sx={{ mb: 4 }} variant="h6" gutterBottom component="div">
+                    <Typography data-aos="fade-down" sx={{ mb: 4 }} variant="h6" gutterBottom component="div">
                         Hit a Reviews
                     </Typography>
                     {ratingSuccess &&
                         <Alert className='w-100 m-auto' severity="success"> Successfully Posted your Rating.Go Home Page to View</Alert>
                     }
-                    <form onSubmit={handleSubmit(addReview)}>
+                    <form data-aos="fade-up" onSubmit={handleSubmit(addReview)}>
                         <TextField
                             required
                             {...register("name")}
@@ -81,7 +81,7 @@ const AddReview = () => {
                     </form>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <img width='90%' src="https://i.ibb.co/D4pL7dt/review.jpg.png" alt="img" />
+                    <img data-aos="zoom-in" width='90%' src="https://i.ibb.co/D4pL7dt/review.jpg.png" alt="img" />
                 </Grid>
             </Grid>
         </Container>

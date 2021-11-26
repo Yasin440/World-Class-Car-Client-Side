@@ -26,14 +26,16 @@ const AddAdmin = () => {
     }
     return (
         <div>
-            <div style={{
-                width: 'fit-content',
-                margin: '1rem auto 2rem auto',
-                textAlign: 'center',
-                padding: '0 2rem',
-                borderLeft: '4px solid #1e88e5',
-                borderRight: '4px solid #1e88e5'
-            }}>
+            <div
+                data-aos="zoom-in"
+                style={{
+                    width: 'fit-content',
+                    margin: '1rem auto 2rem auto',
+                    textAlign: 'center',
+                    padding: '0 2rem',
+                    borderLeft: '4px solid #1e88e5',
+                    borderRight: '4px solid #1e88e5'
+                }}>
                 <p style={{
                     backgroundColor: '#1e88e5',
                     color: 'white',
@@ -44,7 +46,7 @@ const AddAdmin = () => {
             {adminSuccess &&
                 <Alert className='w-50 m-auto' severity="success">**{adminEmail}** Successfully Add as Admin</Alert>
             }
-            <form style={{ textAlign: 'center' }} className='w-75 m-auto' onSubmit={handleSubmit(makeAdmin)} >
+            <form style={{ textAlign: 'center' }} className='w-75 m-auto' onSubmit={handleSubmit(makeAdmin)} data-aos="slide-up">
                 <TextField
                     required
                     {...register("email")}

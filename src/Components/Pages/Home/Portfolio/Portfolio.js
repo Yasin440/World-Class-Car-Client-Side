@@ -1,18 +1,22 @@
 import React from 'react';
+import CountUp from "react-countup";
+import VisibilitySensor from 'react-visibility-sensor';
 
 const Portfolio = () => {
     return (
         <div>
             <section id="portfolio">
                 <div className="container-fluid">
-                    <div style={{
-                        width: 'fit-content',
-                        margin: '4rem auto',
-                        textAlign: 'center',
-                        padding: '0 2rem',
-                        borderLeft: '4px solid #1e88e5',
-                        borderRight: '4px solid #1e88e5'
-                    }}>
+                    <div
+                        data-aos="zoom-in"
+                        style={{
+                            width: 'fit-content',
+                            margin: '4rem auto',
+                            textAlign: 'center',
+                            padding: '0 2rem',
+                            borderLeft: '4px solid #1e88e5',
+                            borderRight: '4px solid #1e88e5'
+                        }}>
                         <p style={{
                             backgroundColor: '#1e88e5',
                             color: 'white',
@@ -30,57 +34,111 @@ const Portfolio = () => {
 
                     <div className="row no-gutters justify-content-center">
                         <div className="p-0 col-lg-3 col-sm-6">
-                            <img src="https://i.ibb.co/pvXxPfH/portfolio.png" className="img-fluid w-100" alt="img" />
+                            <img src="https://i.ibb.co/pvXxPfH/portfolio.png" className="img-fluid w-100" alt="img" data-aos="slide-up" />
                         </div>
                         <div className="p-0 col-lg-3 col-sm-6">
-                            <img src="https://i.ibb.co/zVshVyD/portfolio2.png" className="img-fluid" alt="img" />
+                            <img src="https://i.ibb.co/zVshVyD/portfolio2.png" className="img-fluid w-100" alt="img" data-aos="flip-right" />
                         </div>
                         <div className="p-0 col-lg-3 col-sm-6">
-                            <img src="https://i.ibb.co/rFrj1rK/portfolio3.png" className="img-fluid" alt="img" />
+                            <img src="https://i.ibb.co/rFrj1rK/portfolio3.png" className="img-fluid w-100" alt="img" data-aos="flip-left" />
                         </div>
                         <div className="p-0 col-lg-3 col-sm-6">
 
-                            <img src="https://i.ibb.co/QYDCd1Q/portfolio4.png" className="img-fluid" alt="img" />
+                            <img src="https://i.ibb.co/QYDCd1Q/portfolio4.png" className="img-fluid w-100" alt="img" data-aos="slide-up" />
                         </div>
                         <div className="p-0 col-lg-3 col-sm-6">
-                            <img src="https://i.ibb.co/JjghzQm/portfolio5.png" className="img-fluid" alt="img" />
+                            <img src="https://i.ibb.co/JjghzQm/portfolio5.png" className="img-fluid w-100" alt="img" data-aos="slide-up" />
                         </div>
                         <div className="p-0 col-lg-3 col-sm-6">
-                            <img src="https://i.ibb.co/nncz7YQ/portfolio6.png" className="img-fluid" alt="img" />
+                            <img src="https://i.ibb.co/nncz7YQ/portfolio6.png" className="img-fluid w-100" alt="img" data-aos="flip-left" />
                         </div>
                         <div className="p-0 col-lg-3 col-sm-6">
-                            <img src="https://i.ibb.co/7GbSFgq/portfolio7.png" className="img-fluid" alt="img" />
+                            <img src="https://i.ibb.co/7GbSFgq/portfolio7.png" className="img-fluid w-100" alt="img" data-aos="flip-left" />
                         </div>
                         <div className="p-0 col-lg-3 col-sm-6">
-                            <img src="https://i.ibb.co/HGPDpqH/portfolio8.png" className="img-fluid" alt="img" />
+                            <img src="https://i.ibb.co/HGPDpqH/portfolio8.png" className="img-fluid w-100" alt="img" data-aos="slide-up" />
                         </div>
                     </div>
                 </div>
                 <div className="bg-dark">
                     <div className="container">
                         <div className="row p-5 ">
-                            <div className="text-white col-lg-2 col-sm-6 mb-3 text-center">
-                                <h1 className="counter">590</h1>
+                            <div data-aos="zoom-out" className="text-white col-lg-2 col-sm-6 mb-3 text-center">
+                                <h1 className="counter">
+                                    {/* count Up */}
+                                    <CountUp end={590} duration={1} redraw={true}>
+                                        {({ countUpRef, start }) => (
+                                            <VisibilitySensor onChange={start} delayedCall>
+                                                <span ref={countUpRef} />
+                                            </VisibilitySensor>
+                                        )}
+                                    </CountUp>
+                                </h1>
                                 <h6>Customers</h6>
                             </div>
-                            <div className="text-white col-lg-2 col-sm-6 mb-3 text-center">
-                                <h1 className="text-white counter">23</h1>
+                            <div data-aos="zoom-out" className="text-white col-lg-2 col-sm-6 mb-3 text-center">
+                                <h1 className="text-white counter">
+                                    {/* count Up */}
+                                    <CountUp end={34} duration={1} redraw={true}>
+                                        {({ countUpRef, start }) => (
+                                            <VisibilitySensor onChange={start} delayedCall>
+                                                <span ref={countUpRef} />
+                                            </VisibilitySensor>
+                                        )}
+                                    </CountUp>
+                                </h1>
                                 <h6>Show Rooms</h6>
                             </div>
-                            <div className="text-white col-lg-2 col-sm-6 mb-3 text-center">
-                                <h1 className="counter">232</h1>
+                            <div data-aos="zoom-out" className="text-white col-lg-2 col-sm-6 mb-3 text-center">
+                                <h1 className="counter">
+                                    {/* count Up */}
+                                    <CountUp end={232} duration={1} redraw={true}>
+                                        {({ countUpRef, start }) => (
+                                            <VisibilitySensor onChange={start} delayedCall>
+                                                <span ref={countUpRef} />
+                                            </VisibilitySensor>
+                                        )}
+                                    </CountUp>
+                                </h1>
                                 <h6>Features Added</h6>
                             </div>
-                            <div className="text-white col-lg-2 col-sm-6 mb-3 text-center">
-                                <h1 className="counter">5M</h1>
+                            <div data-aos="zoom-out" className="text-white col-lg-2 col-sm-6 mb-3 text-center">
+                                <h1 className="counter">
+                                    {/* count Up */}
+                                    <CountUp end={5} duration={1} redraw={true}>
+                                        {({ countUpRef, start }) => (
+                                            <VisibilitySensor onChange={start} delayedCall>
+                                                <span ref={countUpRef} />
+                                            </VisibilitySensor>
+                                        )}
+                                    </CountUp>M
+                                </h1>
                                 <h6>Facebook Like</h6>
                             </div>
-                            <div className="text-white col-lg-2 col-sm-6 mb-3 text-center">
-                                <h1 className="counter">3M</h1>
+                            <div data-aos="zoom-out" className="text-white col-lg-2 col-sm-6 mb-3 text-center">
+                                <h1 className="counter">
+                                    {/* count Up */}
+                                    <CountUp end={6} duration={1} redraw={true}>
+                                        {({ countUpRef, start }) => (
+                                            <VisibilitySensor onChange={start} delayedCall>
+                                                <span ref={countUpRef} />
+                                            </VisibilitySensor>
+                                        )}
+                                    </CountUp>M
+                                </h1>
                                 <h6>Twitter Follower</h6>
                             </div>
-                            <div className="text-white col-lg-2 col-sm-6 mb-3 text-center">
-                                <h1 className="counter">669</h1>
+                            <div data-aos="zoom-out" className="text-white col-lg-2 col-sm-6 mb-3 text-center">
+                                <h1 className="counter">
+                                    {/* count Up */}
+                                    <CountUp end={696} duration={1} redraw={true}>
+                                        {({ countUpRef, start }) => (
+                                            <VisibilitySensor onChange={start} delayedCall>
+                                                <span ref={countUpRef} />
+                                            </VisibilitySensor>
+                                        )}
+                                    </CountUp>
+                                </h1>
                                 <h6>Great Services</h6>
                             </div>
                         </div>

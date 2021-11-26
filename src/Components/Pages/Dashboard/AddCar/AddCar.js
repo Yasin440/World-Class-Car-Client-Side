@@ -43,14 +43,16 @@ const AddCar = () => {
     }
     return (
         <div>
-            <div style={{
-                width: 'fit-content',
-                margin: '1rem auto 2rem auto',
-                textAlign: 'center',
-                padding: '0 2rem',
-                borderLeft: '4px solid #1e88e5',
-                borderRight: '4px solid #1e88e5'
-            }}>
+            <div
+                data-aos="zoom-in"
+                style={{
+                    width: 'fit-content',
+                    margin: '1rem auto 2rem auto',
+                    textAlign: 'center',
+                    padding: '0 2rem',
+                    borderLeft: '4px solid #1e88e5',
+                    borderRight: '4px solid #1e88e5'
+                }}>
                 <p style={{
                     backgroundColor: '#1e88e5',
                     color: 'white',
@@ -67,6 +69,7 @@ const AddCar = () => {
                     className='w-75 m-auto'
                     onSubmit={handleSubmit(addNewCar)} >
                     <Typography
+                        data-aos="slide-down"
                         id="modal-modal-title"
                         variant="h5"
                         component="h2">
@@ -81,6 +84,7 @@ const AddCar = () => {
                         type='text'
                         variant="standard"
                         sx={style2}
+                        data-aos="slide-up"
                     />
                     <TextField
                         disabled
@@ -91,6 +95,7 @@ const AddCar = () => {
                         type='email'
                         variant="standard"
                         sx={style2}
+                        data-aos="slide-up"
                     />
                     <TextField
                         required
@@ -100,6 +105,7 @@ const AddCar = () => {
                         type='text'
                         variant="standard"
                         sx={style2}
+                        data-aos="slide-up"
                     />
                     <TextField
                         {...register("picture")}
@@ -107,6 +113,7 @@ const AddCar = () => {
                         label="Car IMG URL"
                         variant="standard"
                         sx={style2}
+                        data-aos="slide-up"
                     />
                     <TextField
                         onChange={e => setImg(e.target.files[0])}
@@ -116,6 +123,7 @@ const AddCar = () => {
                         type="file"
                         variant="standard"
                         sx={style2}
+                        data-aos="slide-up"
                     />
                     <TextField
                         required
@@ -125,6 +133,7 @@ const AddCar = () => {
                         variant="standard"
                         type='number'
                         sx={style2}
+                        data-aos="slide-up"
                     />
                     <TextField
                         required
@@ -133,11 +142,23 @@ const AddCar = () => {
                         label="Car Details"
                         variant="standard"
                         sx={style2}
+                        data-aos="slide-up"
                     />
                     {success &&
                         <Alert className='w-50 m-auto' severity="success">**{user.displayName} Successfully Add a Car as Admin</Alert>
                     }
-                    <Button type='submit' sx={{ width: 'fitContent', textAlign: 'center', fontWeight: 'bold', margin: '20px auto', display: 'block' }} variant="outlined">Add Car</Button>
+                    <Button
+                        data-aos="slide-up"
+                        type='submit'
+                        sx={{
+                            width: 'fitContent',
+                            textAlign: 'center',
+                            fontWeight: 'bold',
+                            margin: '3rem auto',
+                            display: 'block'
+                        }}
+                        variant="outlined">Add Car
+                    </Button>
                 </form>
             </div>
 

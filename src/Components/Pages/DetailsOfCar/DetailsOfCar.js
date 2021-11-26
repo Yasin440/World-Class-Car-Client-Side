@@ -32,14 +32,16 @@ const DetailsOfCar = () => {
     return (
         <div>
             <Header></Header>
-            <div style={{
-                width: 'fit-content',
-                margin: '4rem auto',
-                textAlign: 'center',
-                padding: '0 2rem',
-                borderLeft: '4px solid #1e88e5',
-                borderRight: '4px solid #1e88e5'
-            }}>
+            <div
+                data-aos="zoom-in"
+                style={{
+                    width: 'fit-content',
+                    margin: '4rem auto',
+                    textAlign: 'center',
+                    padding: '0 2rem',
+                    borderLeft: '4px solid #1e88e5',
+                    borderRight: '4px solid #1e88e5'
+                }}>
                 <p style={{
                     backgroundColor: '#1e88e5',
                     color: 'white',

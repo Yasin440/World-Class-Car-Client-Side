@@ -1,22 +1,25 @@
-# Getting Started to review this app
+# Getting Started to preview this Full-stack web application.
 
 This project live site [World Class Car](https://world-class-car.web.app).
 
 ## Available Technology.
-* Used Expressjs.
-* React based web application.
+* React Js web application.
 * Google firebase authentication system.
-* React-router-dom.
-* React-nasting-route.
-* Emplement admin user.
-* Manage web Data MongoDB database.
+* React-router-dom and nesting route.
+* Back End: Node Js, Express Js, Mongo DB, Heroku.
 
-### An user can explor...
-1. An user can visite this app as well but this site some private page whis is not available for visiters
-2. One have to be our user to get full features of this app through authentication system.
-3. Visitor can be a user through login with email and google also.
-4. can order any car products and edit his or her ordered product in dashboard.
-5. User can also through review and watch others user opinion about our site in home review section..
+### An user can explore...
+1. An user can visit this app as well but this site contains some private page which is not available for visitors.
+2. One have to be our user to get full features of this app through an authentication system.
+3. Visitors can be a user through registration with email and google also.
+4. User can order any car products and manage his or her order from the dashboard.
+5. Only an admin can approve orders and manage all orders. An admin can make a user to an admin role.
+6. User can make payment after approving any order.
+7. Users can also review and watch others users' opinions about our site in-home review section.
+
+### Additional info.
+* Client Site deployed on Firebase hosting.
+* Server Site hosted on Heroku.
 
 Runs the app in the development Online surver.\
 Open [Heroku_Yasin440](https://nameless-river-31605.herokuapp.com) to view it in the browser.

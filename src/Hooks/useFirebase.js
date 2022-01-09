@@ -22,7 +22,7 @@ const useFirebase = () => {
     const registerWithEmailPassword = (email, password, name, history) => {
         setError('');
         setLoading(true);
-        createUserWithEmailAndPassword(auth, email, password)
+        return createUserWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 // Signed in 
                 setUser(result.user);
@@ -40,12 +40,7 @@ const useFirebase = () => {
                     });
                 history.replace('/');
             })
-            .catch((error) => {
-                setError(error.message);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+            ;
     }
 
     //logInWithEmailPassword
@@ -54,16 +49,7 @@ const useFirebase = () => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
             .then(result => setUser(result.user))
-            .catch(error => {
-                if (error) {
-                    setError(error.message);
-                }
-                else {
-                    alert('Registration Successful');
-                }
-            })
-            .finally(() => setLoading(false));
-        ;
+            ;
 
 
     }
@@ -109,7 +95,7 @@ const useFirebase = () => {
         setLoading(true);
         signOut(auth)
             .then(() => {
-                // Sign-out successful.
+                //log out success
             }).catch((error) => {
                 // An error happened.
             })
@@ -176,6 +162,7 @@ const useFirebase = () => {
         setManageAllOrders,
         registerWithEmailPassword,
         logInWithEmailPassword,
+        setLoading,
         signInWithGoogle,
         logOut
     }

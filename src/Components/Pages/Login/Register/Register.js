@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../../Hooks/useAuth';
 import { useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const Register = () => {
     const [loginData, setLoginData] = useState();
     const [retypePassError, setRetypePassError] = useState();
-    const { registerWithEmailPassword, loading, error } = useAuth();
+    const { registerWithEmailPassword, loading, error, setLoading } = useAuth();
     const history = useHistory()
 
 
@@ -19,12 +20,31 @@ const Register = () => {
         setLoginData(newLoginData);
     }
     const handleLoginSubmit = e => {
+        e.preventDefault()
+        setRetypePassError(false);
         if (loginData.password !== loginData.password2) {
             setRetypePassError(true);
             return;
         }
         else {
-            registerWithEmailPassword(loginData.email, loginData.password, loginData.name, history);
+            registerWithEmailPassword(loginData.email, loginData.password, loginData.name, history)
+                .then(result => {
+                    swal("Registration Successful!", "Please Click Ok!", "success");
+                })
+                .catch((error) => {
+                    if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
+                        swal("Invalid!", "Email Already used!", "error");
+                    }
+                    else if (error.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
+                        swal("Invalid!", "Password should be at least 6 characters", "error");
+                    }
+                    else {
+                        swal("Invalid!", "Email or Password format", "error");
+                    }
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
         }
 
         e.preventDefault();

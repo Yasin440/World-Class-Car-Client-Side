@@ -2,10 +2,16 @@ import { ListItemText } from '@mui/material';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
+import swal from 'sweetalert';
 import './Header.css';
 
 const Header = () => {
     const { user, logOut } = useAuth();
+    const handleLogOut = e => {
+        logOut();
+        swal("SignOut Successful!", "Please Click Ok!", "success");
+        e.preventDefault()
+    }
     return (
         <nav className="navbar navbar-expand-lg navbar-light header">
             <div className='container'>
@@ -29,7 +35,7 @@ const Header = () => {
                                     <ListItemText sx={{ fontWeight: 'bold', color: 'white' }} primary={user?.displayName} />
                                 </div>
 
-                                <button onClick={logOut} className="logOut navButton"><i className="fas fa-sign-out-alt me-1"></i>logOut</button>
+                                <button onClick={handleLogOut} className="logOut navButton"><i className="fas fa-sign-out-alt me-1"></i>logOut</button>
                             </>
                             :
                             <NavLink to='/login'>

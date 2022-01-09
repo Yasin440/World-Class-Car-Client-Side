@@ -5,12 +5,11 @@ import useAuth from '../../../Hooks/useAuth';
 import { useLocation, useHistory } from "react-router";
 import Header from '../../Shared/Header/Header';
 import Footer from '../../Shared/Footer/Footer';
-import Alert from '@mui/material/Alert';
+import swal from 'sweetalert';
 
 const Login = () => {
     const [loginData, setLoginData] = useState();
-    const { signInWithGoogle, logInWithEmailPassword, error } = useAuth();
-    const [alert, serAlert] = useState(false);
+    const { signInWithGoogle, logInWithEmailPassword, setLoading } = useAuth();
     const location = useLocation();
     const history = useHistory();
     const redirect_url = location.state?.from || '/home';
@@ -19,6 +18,7 @@ const Login = () => {
     const handleGoogleLogin = () => {
         signInWithGoogle()
             .then(result => {
+                swal("login Successful!", "Please Click Ok!", "success");
                 history.push(redirect_url);
             })
     }
@@ -26,14 +26,15 @@ const Login = () => {
     const logInWithEmailPass = (email, password) => {
         logInWithEmailPassword(email, password)
             .then(result => {
+                swal("login Successful!", "Please Click Ok!", "success");
+                history.push(redirect_url);
+            })
+            .catch(error => {
                 if (error) {
-                    serAlert(true);
-                    return;
-                }
-                else {
-                    history.push(redirect_url);
+                    swal("Invalid!", "Wrong Username or Password!", "error");
                 }
             })
+            .finally(() => setLoading(false));
     }
     //get input field value
     const handleOnBlur = e => {
@@ -59,9 +60,6 @@ const Login = () => {
                         <Typography variant="h6" gutterBottom component="div" data-aos="fade-down">
                             Please Login
                         </Typography>
-                        {alert &&
-                            <Alert severity="error">Username Or Password is Not Correct..!!</Alert>
-                        }
                         <form onSubmit={handleLogInWithEmailPass} data-aos="fade-up">
                             <TextField
                                 required

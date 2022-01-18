@@ -1,0 +1,19 @@
+*{
+    transition: .5s all !important;
+}
+.MuiCardActions-root .MuiButton-outlinedPrimary:hover{
+    background-color: #1E88E5;
+    color :#fff;
+}
+.MuiCardActions-root .MuiButton-outlinedPrimary{
+    font-weight: 500;
+}
+.MuiGrid-root .MuiPaper-root{
+    transition: .5s all !important;
+}
+.MuiGrid-root .MuiPaper-root:hover{
+    box-shadow: 0 0 20px 0 #808080;
+}
+.MuiPaper-root:hover .css-o69gx8-MuiCardMedia-root{
+    transform: scale(1.04);
+}

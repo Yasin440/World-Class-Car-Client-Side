@@ -34,9 +34,9 @@ function App() {
             <Route path='/explore_all_cars'>
               <ExploreCars></ExploreCars>
             </Route>
-            <Route path='/dashboard'>
+            <PrivateRoute path='/dashboard'>
               <Dashboard></Dashboard>
-            </Route>
+            </PrivateRoute>
             <PrivateRoute path='/carDetails/:detailId'>
               <DetailsOfCar></DetailsOfCar>
             </PrivateRoute>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { CircularProgress, Container, Grid } from '@mui/material';
 import useAuth from '../../../../Hooks/useAuth';
-import ManageCarCard from './ManageCarCard/ManageCarCard';
+import DreamCarCard from '../../Home/DreamsCar/DreamCarCard/DreamCarCard';
 
 const ManageAllCars = () => {
     const { cars } = useAuth();
@@ -32,10 +32,10 @@ const ManageAllCars = () => {
                 <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                     {
                         cars?.map(car =>
-                            <ManageCarCard
+                            <DreamCarCard
                                 key={car._id}
                                 car={car}
-                            ></ManageCarCard>
+                            ></DreamCarCard>
                         )
                     }
                 </Grid>

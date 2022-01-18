@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="container text-light">
 
                 <div className="copy text-center">
-                    <img style={{ width: '15%' }} src="https://i.ibb.co/Wc690Sj/logo-removebg-preview.png" alt="logo" />
+                    <img style={{ width: '6%' }} src="https://i.ibb.co/vwvfCpH/World-class-car-logo.png" alt="logo" />
                     <p className="mt-3">&copy;-<span>World Class Car</span>-Rights reserved by World-class-car</p>
                 </div>
                 <div className='downFooter'>

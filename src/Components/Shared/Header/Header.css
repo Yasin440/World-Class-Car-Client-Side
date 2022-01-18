@@ -32,8 +32,8 @@ a.nav-link {
 .pages a{
     color: white;
     text-decoration: none;
-    font-weight: 500;
-    padding: 3px 5px !important;
+    font-weight: 400;
+    padding: 0px 6px 3px 6px!important;
     margin: 4px 7px;
     transition: .5s all;
     border-top: 2px solid transparent;

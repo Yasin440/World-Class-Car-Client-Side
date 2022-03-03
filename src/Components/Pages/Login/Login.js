@@ -93,6 +93,7 @@ const Login = () => {
                                     sx={{ fontWeight: 600 }}
                                     variant="text">New User? Please Register</Button>
                             </Link>
+                            <p>login as admin with<br />eiasin@gmail.com<br />pass: aaaaaa</p>
                         </form>
                     </Grid>
                 </Grid>

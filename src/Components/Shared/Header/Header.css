@@ -1,11 +1,31 @@
 .logo{
     width: 12%;
 }
+.header .themeBtn{
+    padding: 7px 20px;
+    color: #1e88e5;
+    cursor: pointer;
+}
+.header .themeBtn:hover{
+    padding: 7px 20px;
+    color: #fff;
+}
+.header .themeBtn:before{
+    background-color: #fff;
+}
+.header .themeBtn:after{
+background-color: #bc1622;
+}
 .header{
     background: #1e88e5;
     position: sticky;
     top: 0;
     z-index: 10;
+}
+.header .avatar{
+    width: 45px;
+    height: 45px;
+    border-radius: 3rem;
 }
 .header .user{
     font-size: 12px;
@@ -14,13 +34,14 @@ button{
     background: transparent;
     font-weight: 500;
     border: 2px solid white;
-    padding: 5px 15px;
+    padding: 4px 15px;
     border-radius: 9px;
 }
 .navButton{
     transition: .5s all;
     background-color: transparent;
     color: white;
+    height: fit-content;
 }
 .logOut:hover{
     background:#F71943;

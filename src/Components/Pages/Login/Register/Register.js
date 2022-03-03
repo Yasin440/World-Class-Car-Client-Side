@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../../../Hooks/useAuth';
 import { useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
+import Footer from '../../../Shared/Footer/Footer';
+import Header from '../../../Shared/Header/Header';
 
 const Register = () => {
     const [loginData, setLoginData] = useState();
@@ -32,11 +34,15 @@ const Register = () => {
                     swal("Registration Successful!", "Please Click Ok!", "success");
                 })
                 .catch((error) => {
+                    console.log(error);
                     if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
                         swal("Invalid!", "Email Already used!", "error");
                     }
                     else if (error.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).') {
                         swal("Invalid!", "Password should be at least 6 characters", "error");
+                    }
+                    else if (error.message === 'Firebase: Error (auth/network-request-failed).') {
+                        swal("Invalid!", "network-request-failed", "error");
                     }
                     else {
                         swal("Invalid!", "Email or Password format", "error");
@@ -50,66 +56,71 @@ const Register = () => {
         e.preventDefault();
     }
     return (
-        <Container>
-            <Grid container spacing={2}>
-                <Grid item sx={{ mt: 8 }} xs={12} md={6}>
-                    <Typography variant="h6" gutterBottom component="div">
-                        Please Register
-                    </Typography>
-                    {loading ?
-                        <div style={{ textAlign: 'center' }}>
-                            <CircularProgress sx={{ my: 3 }} />
-                        </div>
-                        :
-                        <form onSubmit={handleLoginSubmit} data-aos="flip-right">
-                            {error &&
-                                <Alert severity="error">{error}</Alert>
-                            }
-                            <TextField
-                                sx={{ width: '75%', mt: 2 }}
-                                required
-                                name="name"
-                                onBlur={handleOnBlur}
-                                type="text"
-                                label="Your Name"
-                                variant="standard" />
-                            <TextField
-                                sx={{ width: '75%', mt: 2 }}
-                                required
-                                name="email"
-                                onBlur={handleOnBlur}
-                                type="email"
-                                label="Your Email"
-                                variant="standard" />
-                            <TextField
-                                sx={{ width: '75%', mt: 2 }}
-                                required
-                                label="Your Password"
-                                name="password"
-                                onBlur={handleOnBlur}
-                                type="password"
-                                variant="standard" />
-                            <TextField
-                                sx={{ width: '75%', mt: 2 }}
-                                required
-                                label="Retype Your Password"
-                                name="password2"
-                                onBlur={handleOnBlur}
-                                type="password"
-                                variant="standard" />
-                            {retypePassError &&
-                                <Alert sx={{ width: '75%', mt: 2, mx: 'auto' }} severity="error">Password didn't Match — check it out!</Alert>
-                            }
-                            <Button sx={{ width: '75%', my: 4, fontWeight: 600 }} type="submit" variant="contained">Register</Button>
-                            <Link style={{ textDecoration: 'none' }} to="/login"><Button sx={{ fontWeight: 600 }} variant="text">Already Registered? Please Login</Button></Link>
-                        </form>
-                    }
+        <div>
+            <Header />
+            <Container>
+                <Grid container spacing={2}>
+                    <Grid item sx={{ mt: 8 }} xs={12} md={6}>
+                        <Typography variant="h6" gutterBottom component="div">
+                            Please Register
+                        </Typography>
+                        {loading ?
+                            <div style={{ textAlign: 'center' }}>
+                                <CircularProgress sx={{ my: 3 }} />
+                            </div>
+                            :
+                            <form onSubmit={handleLoginSubmit} data-aos="flip-right">
+                                {error &&
+                                    <Alert severity="error">{error}</Alert>
+                                }
+                                <TextField
+                                    sx={{ width: '75%', mt: 2 }}
+                                    required
+                                    name="name"
+                                    onBlur={handleOnBlur}
+                                    type="text"
+                                    label="Your Name"
+                                    variant="standard" />
+                                <TextField
+                                    sx={{ width: '75%', mt: 2 }}
+                                    required
+                                    name="email"
+                                    onBlur={handleOnBlur}
+                                    type="email"
+                                    label="Your Email"
+                                    variant="standard" />
+                                <TextField
+                                    sx={{ width: '75%', mt: 2 }}
+                                    required
+                                    label="Your Password"
+                                    name="password"
+                                    onBlur={handleOnBlur}
+                                    type="password"
+                                    variant="standard" />
+                                <TextField
+                                    sx={{ width: '75%', mt: 2 }}
+                                    required
+                                    label="Retype Your Password"
+                                    name="password2"
+                                    onBlur={handleOnBlur}
+                                    type="password"
+                                    variant="standard" />
+                                {retypePassError &&
+                                    <Alert sx={{ width: '75%', mt: 2, mx: 'auto' }} severity="error">Password didn't Match — check it out!</Alert>
+                                }
+                                <Button sx={{ width: '75%', my: 4, fontWeight: 600 }} type="submit" variant="contained">Register</Button>
+                                <Link style={{ textDecoration: 'none' }} to="/login"><Button sx={{ fontWeight: 600 }} variant="text">Already Registered? Please Login</Button></Link>
+                            </form>
+                        }
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        <img width='90%' src="https://i.ibb.co/2vDHcBQ/register.png" alt="img" data-aos="zoom-in" />
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} md={6}>
-                    <img width='90%' src="https://i.ibb.co/2vDHcBQ/register.png" alt="img" data-aos="zoom-in" />
-                </Grid>
-            </Grid>
-        </Container>
+            </Container>
+            <Footer />
+        </div>
+
     );
 };
 

@@ -10,6 +10,9 @@
     padding: 7px 20px;
     color: #fff;
 }
+.navbar .pages{
+    margin-left: 30px;
+}
 .header .themeBtn:before{
     background-color: #fff;
 }
@@ -17,7 +20,7 @@
 background-color: #bc1622;
 }
 .header{
-    background: #1e88e5;
+    background: #7bc1ff;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -51,21 +54,17 @@ a.nav-link {
     color: white !important;
 }
 .pages a{
-    color: white;
+    color: #bc1622;
     text-decoration: none;
-    font-weight: 400;
-    padding: 0px 6px 3px 6px!important;
+    font-weight: 600;
     margin: 4px 7px;
     transition: .5s all;
-    border-top: 2px solid transparent;
-    border-bottom: 2px solid transparent;
     width: fit-content;
 
 }
 .pages a:hover{
-    border-top: 2px solid white;
-    border-bottom: 2px solid white;
+   color:#fff;
 }
 .pages .active{
-    border-top: 2px solid white;
+    color: #fff;
 }

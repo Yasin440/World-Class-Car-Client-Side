@@ -6,15 +6,17 @@ import Header from '../../../Shared/Header/Header';
 import Footer from '../../../Shared/Footer/Footer';
 import Reviews from '../Reviews/Reviews';
 import OurOffer from '../../../OurOffer/OurOffer';
+import About from '../../../About/About';
 const Home = () => {
     return (
         <div>
             <Header />
             <Banner />
-            <DreamsCar />
             <OurOffer />
+            <About />
+            <DreamsCar />
             <div style={{
-                backgroundColor: '#e6e6e6fa',
+                backgroundColor: '#F0F0F0',
                 paddingTop: '1px',
                 paddingBottom: '5rem'
             }}>
